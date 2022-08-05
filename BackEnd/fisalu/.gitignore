@@ -32,3 +32,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### DS ###
+.DS_Store
+
+### Application.Properties ###
+/src/main/resources/application.properties
