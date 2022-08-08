@@ -14,4 +14,12 @@ public class IncomeMapper {
         entity.setMount(dto.getMount());
         return entity;
     }
+
+    public IncomeDto incomeEntity2Dto(Income entity){
+        return IncomeDto.builder()
+                .date(entity.getDate())
+                .description(entity.getDescription())
+                .mount(entity.getMount())
+                .build();
+    }
 }
