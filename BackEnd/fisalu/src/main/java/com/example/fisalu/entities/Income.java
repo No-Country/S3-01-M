@@ -1,6 +1,9 @@
 package com.example.fisalu.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,6 +18,9 @@ import java.time.LocalDate;
 @SQLDelete(sql = "UPDATE incomes SET deleted = true WHERE id=?")
 @Where(clause = "deleted = false")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Income implements Serializable {
 
     @Id
