@@ -7,14 +7,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Data
@@ -29,15 +27,21 @@ public class Gasto {
     private long id;
 
     @Enumerated
-    @ManyToOne
+    @NonNull
     private Categoria categoria;
 
-    private double monto;
+    @NonNull
+    private String nombre;
 
-    @Temporal(TemporalType.DATE)
+    private String descripcion;
+
+    @NonNull
+    private Double monto;
+
     private LocalDate fecha;
 
-    private boolean eliminado;
+    @NonNull
+    private Boolean eliminado;
 
 
 }
