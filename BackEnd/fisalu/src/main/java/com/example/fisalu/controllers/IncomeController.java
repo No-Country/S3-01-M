@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
+
 @RestController
 @RequestMapping("/incomes")
 public class IncomeController {
@@ -17,7 +20,7 @@ public class IncomeController {
     private IncomeService incomeService;
 
     @PostMapping
-    public ResponseEntity<IncomeDto> saveIncome(@RequestBody IncomeDto incomeDto){
+    public ResponseEntity<IncomeDto> saveIncome(@Valid @RequestBody IncomeDto incomeDto){
         return ResponseEntity.ok().body(incomeService.saveIncome(incomeDto));
     }
 }

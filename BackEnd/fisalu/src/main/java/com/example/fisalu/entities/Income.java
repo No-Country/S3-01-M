@@ -10,6 +10,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -27,12 +30,16 @@ public class Income implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Min(value = 0)
     @Column(name = "mount")
     private Double mount;
 
+    @NotNull
     @Column(name = "date")
     private LocalDate date;
 
+    @NotBlank
     @Column(name = "description")
     private String description;
 
