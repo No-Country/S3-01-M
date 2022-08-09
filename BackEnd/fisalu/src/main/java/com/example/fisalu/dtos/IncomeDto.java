@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -15,11 +14,11 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class IncomeDto {
 
-    @NotNull
-    @Min(value = 0)
+    @NotNull(message = "{field.not.null}")
+    @Min(value = 0, message = "{mount.negative}")
     private Double mount;
-    @NotNull
+    @NotNull(message = "{field.not.null}")
     private String date;
-    @NotBlank
+    @NotNull(message = "{field.not.null}")
     private String description;
 }

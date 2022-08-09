@@ -30,16 +30,16 @@ public class Income implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Min(value = 0)
+    @NotNull(message = "{field.not.null}")
+    @Min(value = 0, message = "{mount.negative}")
     @Column(name = "mount")
     private Double mount;
 
-    @NotNull
+    @NotNull(message = "{field.not.null}")
     @Column(name = "date")
     private LocalDate date;
 
-    @NotBlank
+    @NotBlank(message = "{field.not.null}")
     @Column(name = "description")
     private String description;
 
