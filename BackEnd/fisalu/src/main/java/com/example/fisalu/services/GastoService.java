@@ -31,6 +31,8 @@ public class GastoService {
             g.setEliminado(gasto.getEliminado());
             g.setFecha(gasto.getFecha());
             g.setMonto(gasto.getMonto());
+            g.setNombre(gasto.getNombre());
+            g.setDescripcion(gasto.getDescripcion());
 
             return gastoRepository.save(g);
         } else {
