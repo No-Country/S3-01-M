@@ -6,26 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.fisalu.entities.Categoria;
 import com.example.fisalu.entities.Gasto;
 import com.example.fisalu.services.GastoService;
 
-@RestController("/api/gastos")
+@RestController
 public class GastoController {
     
     @Autowired
     GastoService gastoService;
 
-    @GetMapping("/todos")
+    @GetMapping("/api/gastos/todos")
     public List<Gasto> todos(){
         return gastoService.findAll();
     }
 
-    @PostMapping("/nuevo")
+    @PostMapping("/api/gastos/nuevo")
     public ResponseEntity<Gasto> nuevo(@RequestBody Gasto gasto){
         Gasto gNuevo = gastoService.save(gasto);
         if (gNuevo != null) {
@@ -35,9 +37,9 @@ public class GastoController {
         }
     }
 
-    @PostMapping("/modificar")
-    public ResponseEntity<Gasto> modificar(@RequestBody Gasto gasto){
-        Gasto gModificado = gastoService.modificar(gasto, gasto.getId());
+    @PutMapping("/api/gastos/modificar{id}")
+    public ResponseEntity<Gasto> modificar(@RequestBody Gasto gasto, @RequestParam long id){
+        Gasto gModificado = gastoService.modificar(gasto, id);
 
         if (gModificado != null) {
             return ResponseEntity.ok(gModificado);
@@ -46,8 +48,8 @@ public class GastoController {
         }
     }
 
-    @PostMapping("/baja/{id}")
-    public ResponseEntity<Gasto> baja(@PathVariable long id){
+    @PutMapping("/api/gastos/baja{id}")
+    public ResponseEntity<Gasto> baja(@RequestParam long id){
         Gasto gModificado = gastoService.baja(id);
 
         if (gModificado != null) {
@@ -57,8 +59,8 @@ public class GastoController {
         }
     }
     
-    @PostMapping("/alta/{id}")
-    public ResponseEntity<Gasto> alta(@PathVariable long id){
+    @PutMapping("/api/gastos/alta{id}")
+    public ResponseEntity<Gasto> alta(@RequestParam long id){
         Gasto gModificado = gastoService.alta(id);
 
         if (gModificado != null) {
@@ -68,8 +70,8 @@ public class GastoController {
         }
     }
 
-    @GetMapping("/buscar/{id}")
-    public ResponseEntity<Gasto> buscar(@PathVariable long id){
+    @GetMapping("/api/gastos/buscar{id}")
+    public ResponseEntity<Gasto> buscar(@RequestParam long id){
         if (gastoService.existsById(id)) {
             return ResponseEntity.ok(gastoService.findByID(id));
         } else {
@@ -77,8 +79,8 @@ public class GastoController {
         }
     }
 
-    @GetMapping("/buscar/{nombre}")
-    public ResponseEntity<Gasto> buscarPorNombre(@PathVariable String nombre){
+    @GetMapping("/api/gastos/buscar-por-nombre{nombre}")
+    public ResponseEntity<Gasto> buscarPorNombre(@RequestParam String nombre){
         Gasto g = gastoService.findByNombre(nombre);
         if (g != null ) {
             return ResponseEntity.ok(g);
@@ -87,8 +89,8 @@ public class GastoController {
         }
     }
 
-    @GetMapping("/listar-por-categoria/{categoria}")
-    public List<Gasto> listarPorCategoria(@PathVariable String categoria){
-        return gastoService.findByCategoria(categoria);
+    @GetMapping("/api/gastos/categoria{categoria}")
+    public List<Gasto> listarPorCategoria(@RequestParam String categoria){
+        return gastoService.findByCategoria(Categoria.valueOf(categoria.toUpperCase()));
     }
 }

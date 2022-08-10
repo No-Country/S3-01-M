@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.fisalu.entities.Categoria;
 import com.example.fisalu.entities.Gasto;
 import com.example.fisalu.repositories.GastoRepository;
 
@@ -79,7 +80,7 @@ public class GastoService {
         }
     }
 
-    public List<Gasto> findByCategoria(String categoria){
+    public List<Gasto> findByCategoria(Categoria categoria){
         List<Gasto> gastos = gastoRepository.buscarPorCategoria(categoria);
 
         if (gastos != null) {
