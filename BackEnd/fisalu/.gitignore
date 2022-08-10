@@ -39,10 +39,3 @@ build/
 ### Application.Properties ###
 /env.properties
 /src/main/resources/application-dev.properties
-
-### DS ###
-.DS_Store
-
-### Application.Properties ###
-/env.properties
-/src/main/resources/application-dev.properties
