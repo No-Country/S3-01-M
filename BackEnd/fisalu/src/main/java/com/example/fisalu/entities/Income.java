@@ -43,6 +43,8 @@ public class Income implements Serializable {
     @Column(name = "description")
     private String description;
 
+    //TODO: relacionar con cliente/usuario la relacion tiene que ser de uno a muchos
+
     @Column(name = "deleted")
     private boolean deleted = Boolean.FALSE;
 

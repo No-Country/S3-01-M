@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class IncomeMapper {
@@ -24,5 +26,13 @@ public class IncomeMapper {
                 .description(entity.getDescription())
                 .mount(entity.getMount())
                 .build();
+    }
+
+    public List<IncomeDto> incomeList2IncomeDtoList(List<Income> incomes){
+        List<IncomeDto> incomeDtos = new ArrayList<>();
+        incomes.forEach(income -> {
+            incomeDtos.add(this.incomeEntity2Dto(income));
+        });
+        return incomeDtos;
     }
 }

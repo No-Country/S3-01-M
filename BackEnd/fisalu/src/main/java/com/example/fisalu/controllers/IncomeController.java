@@ -4,12 +4,10 @@ import com.example.fisalu.dtos.IncomeDto;
 import com.example.fisalu.services.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -20,7 +18,23 @@ public class IncomeController {
     private IncomeService incomeService;
 
     @PostMapping
-    public ResponseEntity<IncomeDto> saveIncome(@Valid @RequestBody IncomeDto incomeDto){
+    public ResponseEntity<IncomeDto> saveIncome(@Valid @RequestBody IncomeDto incomeDto) {
         return ResponseEntity.ok().body(incomeService.saveIncome(incomeDto));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<IncomeDto>> getAllIncomes() {
+        return ResponseEntity.ok().body(incomeService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<IncomeDto> getIncomeById(@PathVariable("id") Long id) {
+        IncomeDto result = incomeService.findIncomeById(id);
+        return ResponseEntity.ok(result);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<IncomeDto> updateIncome(@PathVariable("id") Long id,@RequestBody IncomeDto incomeDto ){
+        return ResponseEntity.ok(incomeService.updateIncome(id,incomeDto));
     }
 }
