@@ -63,8 +63,18 @@ public class IncomeServiceImpl implements IncomeService {
         ));
         if (newIncome.getDate() != null) income.setDate(newIncome.getDate());
         if (newIncome.getDescription() != null) income.setDescription(newIncome.getDescription());
-        if (newIncome.getMount()!=null) income.setMount(newIncome.getMount());
+        if (newIncome.getMount() != null) income.setMount(newIncome.getMount());
         income = incomeRepository.save(newIncome);
         return incomeMapper.incomeEntity2Dto(income);
+    }
+
+    @Override
+    public void deleteIncome(Long id) {
+        Income income = incomeRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(
+                "Income",
+                "id",
+                id
+        ));
+        incomeRepository.deleteById(id);
     }
 }

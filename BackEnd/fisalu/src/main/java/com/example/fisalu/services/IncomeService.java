@@ -10,4 +10,6 @@ public interface IncomeService {
     IncomeDto findIncomeById(Long id);
 
     IncomeDto updateIncome(Long id, IncomeDto dto);
+
+    void deleteIncome(Long id);
 }
