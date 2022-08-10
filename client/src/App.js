@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
+import ControlPanel from './components/controlPanel/ControlPanel';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Register" element={<Register />}></Route>
+          <Route path="/control" element={<ControlPanel/>}></Route>
         </Routes>
       </BrowserRouter>
+
+    
     </div>
   );
 }
