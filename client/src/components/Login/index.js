@@ -106,7 +106,7 @@ const Login = () => {
                   <div className="flex items-center justify-between">
                     <p className="text-sm text-gray-500">
                       No account?
-                      <a className="underline" href="">
+                      <a className="underline" href="/Register">
                         Sign up
                       </a>
                     </p>
@@ -115,7 +115,7 @@ const Login = () => {
                       disabled={isSubmitting}
                       className="inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-emerald-400 rounded-lg"
                     >
-                      Sign in
+                      Ingresar
                     </button>
                   </div>
                 </form>
