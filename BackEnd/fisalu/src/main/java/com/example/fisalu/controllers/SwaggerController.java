@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/api/docs")
+@RequestMapping("/docs")
 public class SwaggerController {
 
     @GetMapping
