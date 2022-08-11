@@ -14,11 +14,16 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class IncomeDto {
 
+    private Long id;
     @NotNull(message = "{field.not.null}")
-    @Min(value = 0, message = "{mount.negative}")
-    private Double mount;
+    @Min(value = 0, message = "{amount.negative}")
+    private Double amount;
     @NotNull(message = "{field.not.null}")
     private String date;
     @NotNull(message = "{field.not.null}")
     private String description;
+    @NotNull(message = "{field.not.null}")
+    private String incomeCategory;
+
+
 }

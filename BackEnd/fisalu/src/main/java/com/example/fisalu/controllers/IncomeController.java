@@ -27,18 +27,18 @@ public class IncomeController {
         return ResponseEntity.ok().body(incomeService.getAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id={id}")
     public ResponseEntity<IncomeDto> getIncomeById(@PathVariable("id") Long id) {
         IncomeDto result = incomeService.findIncomeById(id);
         return ResponseEntity.ok(result);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/id={id}")
     public ResponseEntity<IncomeDto> updateIncome(@PathVariable("id") Long id,@RequestBody IncomeDto incomeDto ){
         return ResponseEntity.ok(incomeService.updateIncome(id,incomeDto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/id={id}")
     public ResponseEntity<String> deleteIncome(@PathVariable("id") Long id){
         incomeService.deleteIncome(id);
         return ResponseEntity.noContent().build();

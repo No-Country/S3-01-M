@@ -1,5 +1,6 @@
 package com.example.fisalu.entities;
 
+import com.example.fisalu.enums.IncomeCategoryEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,7 +32,7 @@ public class Income implements Serializable {
     private Long id;
 
     @NotNull(message = "{field.not.null}")
-    @Min(value = 0, message = "{mount.negative}")
+    @Min(value = 0, message = "{amount.negative}")
     @Column(name = "amount")
     private Double amount;
 
@@ -42,6 +43,8 @@ public class Income implements Serializable {
     @NotBlank(message = "{field.not.null}")
     @Column(name = "description")
     private String description;
+
+    private IncomeCategoryEnum incomeCategory;
 
     //TODO: relacionar con cliente/usuario la relacion tiene que ser de uno a muchos
 

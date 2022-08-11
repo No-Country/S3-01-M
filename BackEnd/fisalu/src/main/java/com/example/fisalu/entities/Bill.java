@@ -1,24 +1,12 @@
 package com.example.fisalu.entities;
 
-import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.example.fisalu.enums.BillCategory;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -48,7 +36,7 @@ public class Bill {
     private LocalDate date;
 
     @NonNull
-    private Boolean deleted;
+    private Boolean deleted = Boolean.FALSE;
 
 
 }
