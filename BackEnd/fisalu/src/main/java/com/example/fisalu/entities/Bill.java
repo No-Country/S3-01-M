@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.example.fisalu.enums.BillCategory;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AccessLevel;
@@ -23,7 +24,7 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Gasto {
+public class Bill {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,22 +33,22 @@ public class Gasto {
 
     @Enumerated
     @NonNull
-    private Categoria categoria;
+    private BillCategory billCategory;
 
     @NonNull
-    private String nombre;
+    private String name;
 
-    private String descripcion;
+    private String description;
 
     @NonNull
-    private Double monto;
+    private Double amount;
 
     @DateTimeFormat(style = "dd.MM.yyyy")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate fecha;
+    private LocalDate date;
 
     @NonNull
-    private Boolean eliminado;
+    private Boolean deleted;
 
 
 }
