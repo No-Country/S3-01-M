@@ -32,8 +32,8 @@ public class Income implements Serializable {
 
     @NotNull(message = "{field.not.null}")
     @Min(value = 0, message = "{mount.negative}")
-    @Column(name = "mount")
-    private Double mount;
+    @Column(name = "amount")
+    private Double amount;
 
     @NotNull(message = "{field.not.null}")
     @Column(name = "date")

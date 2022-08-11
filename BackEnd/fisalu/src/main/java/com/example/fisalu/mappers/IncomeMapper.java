@@ -16,7 +16,7 @@ public class IncomeMapper {
         Income entity = new Income();
         entity.setDescription(dto.getDescription());
         entity.setDate(LocalDate.parse(dto.getDate(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        entity.setMount(dto.getMount());
+        entity.setAmount(dto.getMount());
         return entity;
     }
 
@@ -24,7 +24,7 @@ public class IncomeMapper {
         return IncomeDto.builder()
                 .date(entity.getDate().toString())
                 .description(entity.getDescription())
-                .mount(entity.getMount())
+                .mount(entity.getAmount())
                 .build();
     }
 
