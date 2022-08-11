@@ -1,5 +1,5 @@
-package com.example.fisalu.entities;
+package com.example.fisalu.enums;
 
-public enum Categoria {
+public enum BillCategory {
     SERVICIOS, VIVIENDA, VIATICOS, SALUD, LIMPIEZA, IMPUESTOS, ALIMENTACION, INDUMENTARIA, CUIDADO_PERSONAL, ENTRETENIMIENTOS
 }
