@@ -1,5 +1,7 @@
 package com.example.fisalu.dtos;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,17 +14,23 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ApiModel()
 public class IncomeDto {
 
+    @ApiModelProperty(notes = "Income id", readOnly = true)
     private Long id;
     @NotNull(message = "{field.not.null}")
     @Min(value = 0, message = "{amount.negative}")
+    @ApiModelProperty(notes = "Income amount", required = true)
     private Double amount;
     @NotNull(message = "{field.not.null}")
+    @ApiModelProperty(notes = "Income date", required = true)
     private String date;
     @NotNull(message = "{field.not.null}")
+    @ApiModelProperty(notes = "Income description", required = true)
     private String description;
     @NotNull(message = "{field.not.null}")
+    @ApiModelProperty(notes = "Income category", required = true)
     private String incomeCategory;
 
 
