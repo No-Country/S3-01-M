@@ -43,6 +43,17 @@ public class UserController {
         }
     }
 
+    @GetMapping("/find-by-email{email}")
+    public ResponseEntity<User> findByEmail(@RequestParam String email){
+        User u = userService.findByEmail(email);
+
+        if (u != null) {
+            return ResponseEntity.ok(u);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
     @PostMapping("/save")
     public ResponseEntity<User> save(@RequestBody User user) {
         User u = userService.save(user);
