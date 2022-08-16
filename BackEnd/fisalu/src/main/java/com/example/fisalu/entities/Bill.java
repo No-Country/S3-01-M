@@ -31,8 +31,8 @@ public class Bill {
     @NonNull
     private Double amount;
 
-    @DateTimeFormat(style = "dd.MM.yyyy")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @DateTimeFormat(style = "yyyy.MM.dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
     private LocalDate date;
 
     @NonNull
