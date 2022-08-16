@@ -2,10 +2,10 @@ package com.example.fisalu.services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.fisalu.entities.Bill;
 import com.example.fisalu.enums.BillCategory;
