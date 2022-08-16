@@ -31,6 +31,9 @@ public class Income implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private User user;
+
     @NotNull(message = "{field.not.null}")
     @Min(value = 0, message = "{amount.negative}")
     @Column(name = "amount")
