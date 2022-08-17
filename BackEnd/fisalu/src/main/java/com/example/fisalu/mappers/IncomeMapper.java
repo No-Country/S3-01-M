@@ -16,7 +16,7 @@ public class IncomeMapper {
     public Income incomeDto2IncomeEntity(IncomeDto dto){
         Income entity = new Income();
         entity.setDescription(dto.getDescription());
-        entity.setDate(LocalDate.parse(dto.getDate(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        entity.setDate(LocalDate.parse(dto.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         entity.setAmount(dto.getAmount());
         entity.setIncomeCategory(IncomeCategoryEnum.valueOf(dto.getIncomeCategory().toUpperCase()));
         return entity;
