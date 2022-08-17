@@ -64,6 +64,7 @@ public class IncomeServiceImpl implements IncomeService {
         if (newIncome.getDate() != null) income.setDate(newIncome.getDate());
         if (newIncome.getDescription() != null) income.setDescription(newIncome.getDescription());
         if (newIncome.getAmount() != null) income.setAmount(newIncome.getAmount());
+        if (newIncome.getName() != null) income.setName(newIncome.getName());
         income = incomeRepository.save(income);
         return incomeMapper.incomeEntity2Dto(income);
     }
