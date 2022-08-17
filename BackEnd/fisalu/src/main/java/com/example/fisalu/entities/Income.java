@@ -44,6 +44,10 @@ public class Income implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @NotBlank(message = "{field.not.null}")
+    @Column(name = "name")
+    private String name;
+
     private IncomeCategoryEnum incomeCategory;
 
     //TODO: relacionar con cliente/usuario la relacion tiene que ser de uno a muchos
