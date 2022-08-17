@@ -1,11 +1,11 @@
 import React from 'react'
-import { useRef } from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { modifyMovement, deleteMovement } from '../../features/expenses/expensesSlice';
+import { deleteOutcomeAPI, deleteOutcomeMov, updateOutcomeAPI, modifyOutcomeMov } from '../../features/outcomes/outcomesSlice';
+import { deleteIncomeAPI, deleteIncomeMov, updateIncomeAPI, modifyIncomeMov } from '../../features/incomes/incomesSlice';
 
 const MovementCard = (movement) => {
-    const {id, amount, category, name, date, description, type} = movement.movement;
+    const {id, amount, name, date, description, billCategory, incomeCategory} = movement.movement;
     const [isDisabled, setIsDisabled] = useState(true)
     const dispatch = useDispatch()
     //Esto se va con Formik
@@ -18,19 +18,36 @@ const MovementCard = (movement) => {
     const handleEdit = ()=>{
         setIsDisabled(false)
     }
-    const handleDelete =()=>{
-        dispatch(deleteMovement({id}))
+
+    const handleDelete = async ()=>{
+        if(movement.movement.incomeCategory){
+            const response = await dispatch(deleteIncomeAPI({id}))
+            if(response.payload.status=== 204) dispatch(deleteIncomeMov({id}))
+        }else{
+            const response = await dispatch(deleteOutcomeAPI({id}))
+            if(response.payload.status=== 200) dispatch(deleteOutcomeMov({id}))
+        }
     }
-    const handleSave = ()=>{
+
+    const handleSave = async ()=>{
         //Esto se va con Formik
         const amount = expenseRef.current.value;
         const name = nameRef.current.value;
         const date = dateRef.current.value;
         const description = descriptionRef.current.value;
          // ------------------------
-        dispatch(modifyMovement({id, amount, name, date, description}))
+        if(movement.movement.incomeCategory){
+            const incomeCategoryUpperCase = incomeCategory.toUpperCase().split(" ").join("_");
+            const response = await dispatch(updateIncomeAPI({id, incomeCategory:incomeCategoryUpperCase, amount, date, description}))
+            if(response.payload.status=== 200) dispatch(modifyIncomeMov({id, incomeCategory, amount, name, date, description}))
+        }else{
+            const billCategoryUpperCase = billCategory.toUpperCase().split(" ").join("_");
+            const response = await dispatch(updateOutcomeAPI({id, billCategory:billCategoryUpperCase, amount, name, date, description}))
+            if(response.payload.status=== 200) dispatch(modifyOutcomeMov({id, billCategory, amount, name, date, description}))
+        }
         setIsDisabled(true)
     }
+
     const handleCancel = ()=>{
         setIsDisabled(true)
     }
@@ -60,7 +77,7 @@ const MovementCard = (movement) => {
                 </td>
                 <td className="p-2 whitespace-nowrap">
                     {
-                        type === 'income' ? 
+                        movement.movement.incomeCategory? 
                         (<input type="number" className="text-left font-medium text-green-500 max-w-[90px] bg-white" defaultValue={amount} disabled={isDisabled} ref={expenseRef}/>):
                         (<input type="number" className="text-left font-medium text-red-500 max-w-[90px] bg-white" defaultValue={amount} disabled={isDisabled} ref={expenseRef}/>)
                     }
