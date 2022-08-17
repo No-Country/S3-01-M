@@ -19,6 +19,9 @@ public class Bill {
     @Setter(value = AccessLevel.NONE)
     private long id;
 
+    @ManyToOne
+    private User user;
+
     @Enumerated
     @NonNull
     private BillCategory billCategory;
