@@ -24,7 +24,7 @@ public class IncomeDto {
     @ApiModelProperty(notes = "Income amount", required = true)
     private Double amount;
     @NotNull(message = "{field.not.null}")
-    @ApiModelProperty(notes = "Income date", required = true)
+    @ApiModelProperty(notes = "Income date", required = true, example = "2022-08-31git ")
     private String date;
     @NotNull(message = "{field.not.null}")
     @ApiModelProperty(notes = "Income description", required = true)
