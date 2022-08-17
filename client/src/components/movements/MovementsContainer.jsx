@@ -5,9 +5,10 @@ import MovementCard from './MovementCard'
 
 const MovementsContainer = () => {
     const movements = useSelector(getMovements)
+
   return (
     <>
-        <section className="antialiased bg-gray-100 text-gray-600 h-screen px-4 py-12">
+        <section className="antialiased bg-gray-100 text-gray-600 min-h-screen px-4 py-12">
             <div className="flex flex-col justify-start h-full">
                 <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
                     <header className="px-5 py-4 border-b border-gray-100">
@@ -30,14 +31,15 @@ const MovementsContainer = () => {
                                         <th className="p-2 whitespace-nowrap">
                                             <div className="font-semibold text-left">Monto</div>
                                         </th>
-                                        <th className="p-2 whitespace-nowrap">
-                                            <div className="font-semibold text-center">Fecha</div>
+                                        <th className="p-2 whitespace-nowrap cursor-pointer">
+                                            <div className="font-semibold text-center" >Fecha</div>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody className="text-sm divide-y divide-gray-100">
                                     {
-                                        movements.map((movement)=> (<MovementCard  movement={movement} key={movement.id}/>))
+                                        movements.slice().sort((a,b)=>b.date.localeCompare(a.date))
+                                        .map((movement, index)=> (<MovementCard  movement={movement} key={movement.id+index}/>))
                                     }
                                 </tbody>
                             </table>

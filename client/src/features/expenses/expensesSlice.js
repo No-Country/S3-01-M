@@ -2,14 +2,16 @@ import {createSlice, current} from '@reduxjs/toolkit'
 
 const initialState = {
     expenses: [],
-    status: 'idle',
-    error: null
 }
 
 export const expensesSlice = createSlice({
     name: 'expenses',
     initialState,
     reducers: {
+        synchroDbMovements: (state, action) => {
+            state.expenses = action.payload;
+            console.log(state.expenses)
+        },
         addMovement:(state,action)=>{
             state.expenses.push(action.payload)
             console.log(current(state.expenses))
@@ -29,17 +31,19 @@ export const expensesSlice = createSlice({
             foundMovement.description = description;
             console.log(current(foundMovement))
         }
-    }
+    },
 })
 
-export const { addMovement, deleteMovement, modifyMovement } = expensesSlice.actions
+export const { addMovement, deleteMovement, modifyMovement, synchroDbMovements } = expensesSlice.actions
 
 export default expensesSlice.reducer
 
 export const getMovements = state => state.expenses.expenses;
 
-export const getBalance = state =>{
-    const expenses = state.expenses.expenses;
-    const balance =  expenses.map(expenses=>Number(expenses.amount)).reduce((pv,cv)=> { return pv+cv}, 0)
-    return balance
-}
+// export const getBalance = state =>{
+//     const expenses = state.expenses.expenses;
+//     const incomes =  expenses.filter((expense) => expense.incomeCategory).map(income=>Number(income.amount)).reduce((pv,cv)=> { return pv+cv}, 0);
+//     const outcomes =  expenses.filter((expense) => expense.billCategory).map(outcome=>Number(outcome.amount)).reduce((pv,cv)=> { return pv+cv}, 0)
+//     const balance= incomes-outcomes;
+//     return balance
+// }

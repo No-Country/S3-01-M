@@ -4,10 +4,13 @@ import { useSelector } from 'react-redux'
 import HappyFace from '../../assets/icons/HappyFace'
 import NeutralFace from '../../assets/icons/NeutralFace'
 import SadFace from '../../assets/icons/SadFace'
-import { getBalance } from '../../features/expenses/expensesSlice'
+import { getIncomeBalance } from '../../features/incomes/incomesSlice'
+import { getOutcomeBalance } from '../../features/outcomes/outcomesSlice'
 
 const Balance = () => {
-    const balance = useSelector(getBalance)
+    const incomeBalance = useSelector(getIncomeBalance);
+    const outcomeBalance = useSelector(getOutcomeBalance);
+    const balance = (incomeBalance - outcomeBalance);
     const [emoji, setEmoji] = useState('')
     const [colorEmoji, setColorEmoji] = useState(false)
 
