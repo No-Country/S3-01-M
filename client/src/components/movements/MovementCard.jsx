@@ -38,7 +38,8 @@ const MovementCard = (movement) => {
          // ------------------------
         if(movement.movement.incomeCategory){
             const incomeCategoryUpperCase = incomeCategory.toUpperCase().split(" ").join("_");
-            const response = await dispatch(updateIncomeAPI({id, incomeCategory:incomeCategoryUpperCase, amount, date, description}))
+            const response = await dispatch(updateIncomeAPI({id, incomeCategory:incomeCategoryUpperCase, name, amount, date, description}))
+            console.log(response)
             if(response.payload.status=== 200) dispatch(modifyIncomeMov({id, incomeCategory, amount, name, date, description}))
         }else{
             const billCategoryUpperCase = billCategory.toUpperCase().split(" ").join("_");
