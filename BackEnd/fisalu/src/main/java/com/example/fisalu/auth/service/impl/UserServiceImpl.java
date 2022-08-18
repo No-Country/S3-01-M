@@ -1,25 +1,27 @@
-package com.example.fisalu.services;
+package com.example.fisalu.auth.service.impl;
 
-import java.util.List;
-
+import com.example.fisalu.auth.entity.User;
+import com.example.fisalu.auth.repository.UserRepository;
+import com.example.fisalu.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.fisalu.entities.User;
-import com.example.fisalu.repositories.UserRepository;
+import java.util.List;
 
 @Service
 @Transactional
-public class UserService {
+public class UserServiceImpl implements UserService {
     
     @Autowired
     UserRepository userRepository;
 
+    @Override
     public User save(User user){
         return userRepository.save(user);
     }
 
+    @Override
     public User update(User userModified, long id){
         if(userRepository.existsById(id)){
 
@@ -29,7 +31,7 @@ public class UserService {
             u.setPassword(userModified.getPassword());
             u.setActive(userModified.getActive());
             u.setBills(userModified.getBills());
-            u.setIncomes(userModified.getIncomes());
+            //u.setIncomes(userModified.getIncomes());
             u.setFirstName(userModified.getFirstName());
             u.setLastName(userModified.getLastName());
 
@@ -39,10 +41,12 @@ public class UserService {
         }
     }
 
+    @Override
     public void delete(Long id){
         userRepository.deleteById(id);
     }
 
+    @Override
     public List<User> findAll(){
         return userRepository.findAll();
     }

@@ -1,22 +1,15 @@
-package com.example.fisalu.entities;
+package com.example.fisalu.auth.entity;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import com.example.fisalu.entities.Bill;
+import com.example.fisalu.entities.Income;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,16 +18,17 @@ import lombok.Setter;
 @SQLDelete(sql = "UPDATE user SET active = false WHERE id=?")
 @Where(clause = "active = true")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(value = AccessLevel.NONE)
     private Long id;
 
-    @NonNull
+    @NotBlank(message = "{field.not.null}")
+    @Email
     private String email;
 
-    @NonNull
+    @NotBlank(message = "{field.not.null}")
     private String password;
 
     private String firstName;
@@ -44,7 +38,7 @@ public class User {
     @OneToMany
     private List<Bill> bills;
 
-    @OneToMany
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Income> incomes;
 
     private Boolean active = Boolean.TRUE;
