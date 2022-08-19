@@ -1,7 +1,11 @@
 package com.example.fisalu.auth.controller;
 
+import com.example.fisalu.auth.dto.AuthenticationRequest;
+import com.example.fisalu.auth.dto.AuthenticationResponse;
 import com.example.fisalu.auth.entity.User;
+import com.example.fisalu.auth.service.JwtUserDetailsService;
 import com.example.fisalu.auth.service.impl.UserServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +18,23 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/users")
+@Slf4j
 public class UserController {
     
     @Autowired
     UserServiceImpl userServiceImpl;
+
+    @Autowired
+    private JwtUserDetailsService userDetailsService;
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest authReq) throws Exception {
+        return ResponseEntity.ok(userDetailsService.login(authReq));
+    }
+    @PostMapping("/register")
+    public ResponseEntity<User> registerUser(@RequestBody User user){
+        return ResponseEntity.ok(userDetailsService.register(user));
+    }
 
     @GetMapping("/all")
     public List<User> all(){

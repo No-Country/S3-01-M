@@ -41,6 +41,8 @@ public class User {
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Income> incomes;
 
+    private Role role;
+
     private Boolean active = Boolean.TRUE;
 
 }
