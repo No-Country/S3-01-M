@@ -2,6 +2,7 @@ package com.example.fisalu.auth.entity;
 
 import com.example.fisalu.entities.Bill;
 import com.example.fisalu.entities.Income;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -36,9 +37,11 @@ public class User {
     private String LastName;
 
     @OneToMany
+    @JsonIgnore
     private List<Bill> bills;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Income> incomes;
 
     private Role role;
