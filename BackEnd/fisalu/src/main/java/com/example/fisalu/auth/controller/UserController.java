@@ -2,6 +2,7 @@ package com.example.fisalu.auth.controller;
 
 import com.example.fisalu.auth.dto.AuthenticationRequest;
 import com.example.fisalu.auth.dto.AuthenticationResponse;
+import com.example.fisalu.auth.entity.Role;
 import com.example.fisalu.auth.entity.User;
 import com.example.fisalu.auth.service.JwtUserDetailsService;
 import com.example.fisalu.auth.service.impl.UserServiceImpl;
@@ -65,23 +66,21 @@ public class UserController {
 
     @PostMapping("/save")
     public ResponseEntity<User> save(@Valid @RequestBody User user) {
-        User u = userServiceImpl.save(user);
-
-        if (u != null) {
+        try {
+            User u = userServiceImpl.save(user);
             return ResponseEntity.ok(u);
-        } else {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
+        
     }
 
     @PutMapping("/update{id}")
     public ResponseEntity<User> update(@RequestParam Long id, @RequestBody User user){
-
-        User u = userServiceImpl.update(user, id);
-
-        if (u != null) {
+        try {
+            User u = userServiceImpl.update(user, id);
             return ResponseEntity.ok(u);
-        } else {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }
@@ -90,6 +89,19 @@ public class UserController {
     public ResponseEntity<String> delete(@RequestParam Long id){
         userServiceImpl.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/new-admin")
+    public ResponseEntity<String> newAdmin(User user){
+        try {
+            User u = userServiceImpl.save(user);
+            u.setRole(Role.ADMIN);
+            userServiceImpl.update(u, u.getId());
+
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
     }
 
 }
