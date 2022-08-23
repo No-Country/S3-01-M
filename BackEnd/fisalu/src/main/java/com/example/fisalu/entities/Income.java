@@ -1,5 +1,6 @@
 package com.example.fisalu.entities;
 
+import com.example.fisalu.auth.entity.User;
 import com.example.fisalu.enums.IncomeCategoryEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,7 +54,9 @@ public class Income implements Serializable {
 
     private IncomeCategoryEnum incomeCategory;
 
-    //TODO: relacionar con cliente/usuario la relacion tiene que ser de uno a muchos
+    @ManyToOne
+    @JoinColumn(name = "usuario")
+    private User usuario;
 
     @Column(name = "deleted")
     private boolean deleted = Boolean.FALSE;

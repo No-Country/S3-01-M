@@ -1,5 +1,6 @@
 package com.example.fisalu.entities;
 
+import com.example.fisalu.auth.entity.User;
 import com.example.fisalu.enums.BillCategory;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
