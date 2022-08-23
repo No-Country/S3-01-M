@@ -27,6 +27,7 @@ public class User {
 
     @NotBlank(message = "{field.not.null}")
     @Email
+    @Column(name = "email", unique = true)
     private String email;
 
     @NotBlank(message = "{field.not.null}")

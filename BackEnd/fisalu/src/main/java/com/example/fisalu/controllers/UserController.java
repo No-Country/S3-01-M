@@ -1,10 +1,11 @@
-package com.example.fisalu.auth.controller;
+package com.example.fisalu.controllers;
 
 import com.example.fisalu.auth.dto.AuthenticationRequest;
 import com.example.fisalu.auth.dto.AuthenticationResponse;
 import com.example.fisalu.auth.entity.User;
 import com.example.fisalu.auth.service.JwtUserDetailsService;
 import com.example.fisalu.auth.service.impl.UserServiceImpl;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("/users")
 @Slf4j
+@Api(tags = "User")
 public class UserController {
     
     @Autowired
