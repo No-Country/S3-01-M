@@ -12,13 +12,16 @@ import java.util.List;
 @Repository
 public interface BillRepository extends JpaRepository<Bill, Long>{
 
-    @Query("SELECT b FROM Bill b WHERE b.billCategory = :category AND b.deleted = false")
-    public List<Bill> findByCategory(@Param("category") BillCategory category);
+    @Query("SELECT b FROM Bill b WHERE b.user.id = :id AND b.billCategory = :category AND b.deleted = false")
+    public List<Bill> findByCategory(@Param("category") BillCategory category, @Param("id") Long id);
 
-    @Query("SELECT b FROM Bill b WHERE b.name = :name AND b.deleted = false")
-    public Bill findByName(@Param("name") String name);
+    @Query("SELECT b FROM Bill b WHERE b.user.id = :id AND b.name = :name AND b.deleted = false")
+    public Bill findByName(@Param("name") String name, @Param("id") Long id);
 
     @Query("SELECT b FROM Bill b WHERE b.deleted = false")
     public List<Bill> findAll();
+
+    @Query("SELECT b FROM Bill b WHERE b.user.id = :id AND b.deleted = false")
+    public List<Bill> findAllByUser(@Param("id") Long id);
 
 }

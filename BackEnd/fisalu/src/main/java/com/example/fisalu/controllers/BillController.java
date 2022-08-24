@@ -20,7 +20,7 @@ public class BillController {
 
     @GetMapping("/all")
     public List<Bill> all(){
-        return billService.findAll();
+        return billService.findAllByUser();
     }
 
     @PostMapping
@@ -45,13 +45,12 @@ public class BillController {
     }
 
     @PutMapping("/delete{id}")
-    public ResponseEntity<Bill> delete(@RequestParam long id){
-        Bill gModificado = billService.delete(id);
-
-        if (gModificado != null) {
-            return ResponseEntity.ok(gModificado);
-        } else {
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    public ResponseEntity<String> delete(@RequestParam long id){
+        try {
+            billService.delete(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(e.getMessage());
         }
     }
     
