@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FisaluLogo from '../../assets/imgs/fisalu.png'
 
 const NavBar = () => {
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+    <nav className=" px-2 sm:px-4 py-2.5 dark:bg-gray-900">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex items-center">
-          <img src="../../../img/logo.png" className="" alt="Fisalu Logo" />
+          <img src={FisaluLogo} className="w-12" alt="Fisalu Logo" />
         </Link>
         <button
           data-collapse-toggle="navbar-default"
@@ -30,11 +31,11 @@ const NavBar = () => {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="flex flex-col items-center p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-col items-center p-4 mt-4  rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link
                 to="/"
-                className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent text-[#AA59CB] md:p-0 dark:text-white"
                 aria-current="page"
               >
                 Home
@@ -65,7 +66,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <button className="bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg">
+              <button className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg">
                 Logout
               </button>
             </li>

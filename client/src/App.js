@@ -10,8 +10,8 @@ import Estadisticas from "./components/Estadisticas";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <div className="App" style={{background: 'linear-gradient(0deg, rgb(0 0 0 / 12%) 0%, rgba(255,255,255,1) 100%)'}}>
+        <BrowserRouter>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />}></Route>

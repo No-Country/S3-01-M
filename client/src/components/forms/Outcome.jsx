@@ -39,9 +39,9 @@ const Outcome = () => {
                 <div className="flex justify-between items-center mb-3">
                   {/* Categorías */}
                   <div className="inline-flex items-center self-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-3 bg-gradient-to-r from-pink-600 to-red-600 shadow-lg rounded p-1.5 text-gray-100" role="img" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="userIconTitle" stroke="#fff" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#fff"> <title id="userIconTitle">User</title> <path strokeLinecap="round" d="M5.5,19.5 C7.83333333,18.5 9.33333333,17.6666667 10,17 C11,16 8,16 8,11 C8,7.66666667 9.33333333,6 12,6 C14.6666667,6 16,7.66666667 16,11 C16,16 13,16 14,17 C14.6666667,17.6666667 16.1666667,18.5 18.5,19.5"/> <circle cx="12" cy="12" r="10"/> </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="border border-black h-8 w-8 mr-3 bg-gradient-to-r from-pink-600 to-red-600 shadow-lg rounded p-1.5 text-gray-100" role="img" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="userIconTitle" stroke="#fff" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#fff"> <title id="userIconTitle">User</title> <path strokeLinecap="round" d="M5.5,19.5 C7.83333333,18.5 9.33333333,17.6666667 10,17 C11,16 8,16 8,11 C8,7.66666667 9.33333333,6 12,6 C14.6666667,6 16,7.66666667 16,11 C16,16 13,16 14,17 C14.6666667,17.6666667 16.1666667,18.5 18.5,19.5"/> <circle cx="12" cy="12" r="10"/> </svg>
                     <label htmlFor="category"></label>
-                    <Field component="select" name="category" id="category" className="font-bold text-gray-900" >
+                    <Field component="select" name="category" id="category" className="border border-black rounded-md p-1 font-bold text-gray-900" >
                             {categories.map((category, index)=>
                             <option key={category+index} value={category}>{category}</option>)
                             }
@@ -49,30 +49,20 @@ const Outcome = () => {
                   </div>
                   {/* Input egresos */}
                   <div className="flex">
-                      <button type="button"  className="bg-white p-1.5 font-bold rounded">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clipRule="evenodd" />
-                      </svg>
-                      </button>
                       <label htmlFor='amount'></label>
-                      <Field  id="amount" min="1" placeholder='0' name="amount" type="number" className="max-w-[100px] font-bold font-mono py-1.5 px-2 mx-1.5
+                      <Field  id="amount" min="1" placeholder='0' name="amount" type="number" className="border border-black max-w-[100px] font-bold font-mono py-1.5 px-2 mx-1.5
                       block border border-gray-300 rounded-md text-sm shadow-sm  placeholder-gray-400
                       focus:outline-none
                       focus:border-sky-500
                       focus:ring-1
                       focus:ring-sky-500
                       focus:invalid:border-red-500  focus:invalid:ring-red-500"/>
-                  
-                      <button type="button"  className="bg-white p-1.5 font-bold rounded">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
-                      </svg>
-                      </button>
+      
                   </div>
                 </div>
                 {/* Nombre gasto */}
                 <label htmlFor='name' className="text-sm font-medium">Nombre</label>
-                <Field  className="mb-3 px-2 py-1.5
+                <Field  className="border border-black mb-3 px-2 py-1.5
                     mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
                     focus:border-sky-500
@@ -81,7 +71,7 @@ const Outcome = () => {
                     focus:invalid:border-red-500 focus:invalid:ring-red-500" type="text" name="name" placeholder="Supermercado"/>
                   {/* Fecha gasto */}
                     <label htmlFor='date' className="text-sm font-medium">Fecha</label>
-                    <Field  className="mb-3 px-2 py-1.5
+                    <Field  className="border border-black mb-3 px-2 py-1.5
                     mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
                     focus:border-sky-500
@@ -90,7 +80,7 @@ const Outcome = () => {
                     focus:invalid:border-red-500 focus:invalid:ring-red-500" type="date" name="date" placeholder="Fecha"/>
                   {/* Descripción gasto */}
                     <label htmlFor='description' className="text-sm font-medium">Descripción (opcional)</label>
-                    <Field component="textarea"  className="
+                    <Field component="textarea"  className="border border-black 
                     mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
                     focus:border-sky-500
@@ -98,7 +88,7 @@ const Outcome = () => {
                     focus:ring-sky-500
                     focus:invalid:border-red-500 focus:invalid:ring-red-500" id="description" name="description" placeholder="Escribe algo"></Field>
                         {/* Botón agregar */}
-                        <button type='submit' className="w-full px-4 py-1.5 rounded-md shadow-lg bg-gradient-to-r from-green-400 to-green-600 font-medium text-gray-100 block transition duration-300">
+                        <button type='submit' className="border border-black w-full px-4 py-1.5 rounded-md shadow-lg bg-green-400 font-medium text-gray-100 block transition duration-300">
                             <span className="hidden">Sending</span>
                             <span >Agregar</span>
                         </button> 
