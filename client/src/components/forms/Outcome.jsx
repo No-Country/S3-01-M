@@ -51,7 +51,7 @@ const Outcome = () => {
                   <div className="flex">
                       <label htmlFor='amount'></label>
                       <Field  id="amount" min="1" placeholder='0' name="amount" type="number" className="border border-black max-w-[100px] font-bold font-mono py-1.5 px-2 mx-1.5
-                      block border border-gray-300 rounded-md text-sm shadow-sm  placeholder-gray-400
+                      block rounded-md text-sm shadow-sm  placeholder-gray-400
                       focus:outline-none
                       focus:border-sky-500
                       focus:ring-1
@@ -63,7 +63,7 @@ const Outcome = () => {
                 {/* Nombre gasto */}
                 <label htmlFor='name' className="text-sm font-medium">Nombre</label>
                 <Field  className="border border-black mb-3 px-2 py-1.5
-                    mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+                    mb-3 mt-1 block w-full px-2 py-1.5 rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
                     focus:border-sky-500
                     focus:ring-1
@@ -72,7 +72,7 @@ const Outcome = () => {
                   {/* Fecha gasto */}
                     <label htmlFor='date' className="text-sm font-medium">Fecha</label>
                     <Field  className="border border-black mb-3 px-2 py-1.5
-                    mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+                    mb-3 mt-1 block w-full px-2 py-1.5 rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
                     focus:border-sky-500
                     focus:ring-1
@@ -81,7 +81,7 @@ const Outcome = () => {
                   {/* Descripción gasto */}
                     <label htmlFor='description' className="text-sm font-medium">Descripción (opcional)</label>
                     <Field component="textarea"  className="border border-black 
-                    mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+                    mb-3 mt-1 block w-full px-2 py-1.5 rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
                     focus:border-sky-500
                     focus:ring-1

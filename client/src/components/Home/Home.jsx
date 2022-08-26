@@ -59,7 +59,7 @@ const Home = () => {
             {team.map((i) => (
               <div
                 key={i.name}
-                className=" border-black w-[80%] sm:w-[40%] xs:w-[28%] max-w-[340px] mx-2 bg-white max-w-sm rounded-lg border border-gray-200 shadow-md dark:border-gray-400  my-4 p-2"
+                className="border border-black w-[80%] sm:w-[40%] xs:w-[28%] max-w-[340px] mx-2 bg-white max-w-sm rounded-lg shadow-md dark:border-gray-400  my-4 p-2"
               >
                 <div className="flex flex-col items-center ">
                   <img
@@ -82,7 +82,7 @@ const Home = () => {
                     </a>
                     <a
                       href={i.github}
-                      className="border border-black inline-flex items-center py-2 px-4 text-xs font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                      className="border border-black inline-flex items-center py-2 px-4 text-xs font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                     >
                       Github
                     </a>
