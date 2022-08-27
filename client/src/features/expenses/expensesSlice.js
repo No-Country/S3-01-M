@@ -2,6 +2,7 @@ import {createSlice, current} from '@reduxjs/toolkit'
 
 const initialState = {
     expenses: [],
+    category:'',
 }
 
 export const expensesSlice = createSlice({
@@ -30,15 +31,21 @@ export const expensesSlice = createSlice({
             foundMovement.date = date;
             foundMovement.description = description;
             console.log(current(foundMovement))
-        }
+        },
+        setCategory:(state,action)=>{
+            state.category= action.payload
+        },
     },
 })
 
-export const { addMovement, deleteMovement, modifyMovement, synchroDbMovements } = expensesSlice.actions
+export const { addMovement, deleteMovement, modifyMovement, synchroDbMovements, setCategory } = expensesSlice.actions
 
 export default expensesSlice.reducer
 
 export const getMovements = state => state.expenses.expenses;
+
+/* Borrar, es para poder hacer el onclick hasta que este la validación de usuario */
+export const getByCategories = state => state.expenses.category;
 
 // export const getBalance = state =>{
 //     const expenses = state.expenses.expenses;
