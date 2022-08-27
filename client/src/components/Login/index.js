@@ -39,7 +39,7 @@ const Login = () => {
                     ese problema.
                   </p>
                 </div>
-                <form
+                <Form
                   action=""
                   className="max-w-md mx-auto mt-8 mb-0 space-y-4"
                 >
@@ -118,7 +118,7 @@ const Login = () => {
                       Ingresar
                     </button>
                   </div>
-                </form>
+                </Form>
               </div>
               <div className="relative w-full h-64 sm:h-96 lg:w-1/2 lg:h-full">
                 <img

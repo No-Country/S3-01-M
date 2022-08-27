@@ -39,10 +39,7 @@ const Register = () => {
                     ese problema.
                   </p>
                 </div>
-                <form
-                  action=""
-                  className="max-w-md mx-auto mt-8 mb-0 space-y-4"
-                >
+                <Form className="max-w-md mx-auto mt-8 mb-0 space-y-4">
                   <section>
                     <div className="relative">
                       <Field
@@ -143,7 +140,7 @@ const Register = () => {
                       Registrase
                     </button>
                   </div>
-                </form>
+                </Form>
               </div>
               <div className="relative w-full h-64 sm:h-96 lg:w-1/2 lg:h-full">
                 <img
