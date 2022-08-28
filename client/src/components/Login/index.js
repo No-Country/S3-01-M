@@ -1,32 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { login } from "../../features/user/authSlice";
+
 const Login = () => {
-  const [form, setForm] = useState();
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  });
+
+  const { loading, error, user } = useSelector((state) => ({ ...state.auth }));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  const onSubmit = (values) => {
+    console.log("Form data", values);
+    const formValue = {
+      username: values.username,
+      password: values.password,
+    };
+    console.log(formValue);
+
+    dispatch(login({ formValue, navigate, toast }));
+  };
+
+  if (user != null) return <Navigate to="/control" />;
+
   return (
     <>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ username: "", password: "" }}
         validate={(values) => {
           const errors = {};
-          if (!values.email) {
-            errors.email = "Required";
+          if (!values.username) {
+            errors.username = "Required";
           } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)
           ) {
-            errors.email = "Invalid email address";
+            errors.username = "Invalid email address";
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setForm(values);
-          console.log(form);
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+        onSubmit={onSubmit}
       >
-        {({ isSubmitting }) => (
+        {(formik) => (
           <div>
             <section className="relative flex flex-wrap lg:h-screen lg:items-center">
               <div className="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
@@ -46,10 +69,10 @@ const Login = () => {
                   <div>
                     <div className="relative">
                       <Field
-                        type="email"
+                        type="username"
                         className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
-                        name="email"
-                        placeholder="email"
+                        name="username"
+                        placeholder="username"
                       />
                       <ErrorMessage name="email" component="div" />
                       <span className="absolute inset-y-0 inline-flex items-center right-4">
@@ -112,7 +135,7 @@ const Login = () => {
                     </p>
                     <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={!formik.isValid}
                       className="inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-emerald-400 rounded-lg"
                     >
                       Ingresar
