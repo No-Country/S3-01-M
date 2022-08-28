@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import FisaluLogo from '../../assets/imgs/fisalu.png'
+import FisaluLogo from "../../assets/imgs/fisalu.png";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setLogout } from "../../features/user/authSlice";
 
 const NavBar = () => {
+  const [loggeado, setLoggeado] = useState(null);
+  const dispatch = useDispatch();
+
+  const Logout = () => {
+    dispatch(setLogout());
+  };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("profile"));
+    setLoggeado(user);
+    console.log(loggeado);
+  }, []);
+
   return (
     <nav className=" px-2 sm:px-4 py-2.5 dark:bg-gray-900">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -65,11 +81,25 @@ const NavBar = () => {
                 Panel General
               </Link>
             </li>
-            <li>
-              <button className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg">
-                Logout
-              </button>
-            </li>
+            {loggeado == null ? (
+              <>
+                <Link
+                  to="/Login"
+                  className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
+                >
+                  Login
+                </Link>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={Logout()}
+                  className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
+                >
+                  Logout
+                </button>
+              </>
+            )}
           </ul>
         </div>
       </div>
