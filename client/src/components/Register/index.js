@@ -1,7 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { register } from "../../features/user/authSlice";
+
 const Register = () => {
   const [form, setForm] = useState();
+
+  const { loading, error, user } = useSelector((state) => ({ ...state.auth }));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  const onSubmit = (values) => {
+    console.log("Form data", values);
+    const formValue = {
+      firstName: values.name,
+      LastName: values.surname,
+      email: values.email,
+      password: values.password,
+    };
+    console.log(formValue);
+
+    dispatch(register({ formValue, navigate, toast }));
+  };
+
+  if (user != null) return <Navigate to="/control" />;
+
   return (
     <>
       <Formik
@@ -17,16 +46,9 @@ const Register = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setForm(values);
-          console.log(form);
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+        onSubmit={onSubmit}
       >
-        {({ isSubmitting }) => (
+        {(formik) => (
           <div>
             <section className="relative flex flex-wrap lg:h-screen lg:items-center">
               <div className="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
@@ -39,10 +61,7 @@ const Register = () => {
                     ese problema.
                   </p>
                 </div>
-                <form
-                  action=""
-                  className="max-w-md mx-auto mt-8 mb-0 space-y-4"
-                >
+                <Form className="max-w-md mx-auto mt-8 mb-0 space-y-4">
                   <section>
                     <div className="relative">
                       <Field
@@ -137,13 +156,13 @@ const Register = () => {
                     </p>
                     <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={!formik.isValid}
                       className="inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-emerald-400 rounded-lg"
                     >
                       Registrase
                     </button>
                   </div>
-                </form>
+                </Form>
               </div>
               <div className="relative w-full h-64 sm:h-96 lg:w-1/2 lg:h-full">
                 <img
