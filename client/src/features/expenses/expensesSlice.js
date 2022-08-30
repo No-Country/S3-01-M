@@ -11,11 +11,9 @@ export const expensesSlice = createSlice({
     reducers: {
         synchroDbMovements: (state, action) => {
             state.expenses = action.payload;
-            console.log(state.expenses)
         },
         addMovement:(state,action)=>{
             state.expenses.push(action.payload)
-            console.log(current(state.expenses))
         },
         deleteMovement:(state,action)=>{
             const {id} = action.payload
@@ -30,7 +28,6 @@ export const expensesSlice = createSlice({
             foundMovement.name = name;
             foundMovement.date = date;
             foundMovement.description = description;
-            console.log(current(foundMovement))
         },
         setCategory:(state,action)=>{
             state.category= action.payload
