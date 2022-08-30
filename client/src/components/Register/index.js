@@ -38,11 +38,11 @@ const Register = () => {
         validate={(values) => {
           const errors = {};
           if (!values.email) {
-            errors.email = "Required";
+            errors.email = "*Debe ingresar un email";
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = "Invalid email address";
+            errors.email = "*Email inválido";
           }
           return errors;
         }}
@@ -52,13 +52,15 @@ const Register = () => {
           <div>
             <section className="relative flex flex-wrap lg:h-screen lg:items-center">
               <div className="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
-                <div className="max-w-lg mx-auto text-center">
+              <div className="max-w-lg mx-auto text-center">
                   <h1 className="text-2xl font-bold sm:text-3xl">
-                    Bienvenido a la plataforma!
+                    Regístrate!
                   </h1>
-                  <p className="mt-4 text-gray-500">
-                    ¿no sabes en que gastas tu sueldo? Con Fisalu olvidate de
-                    ese problema.
+                  <p className="mt-4 text-xl text-gray-500">
+                    ¿no sabes en que gastas tu sueldo? 
+                  </p>
+                  <p className="mt-4 text-lg text-gray-500">
+                    Con <span className="text-black font-semibold">Fisalu</span> olvidate de ese problema.
                   </p>
                 </div>
                 <Form className="max-w-md mx-auto mt-8 mb-0 space-y-4">
@@ -66,11 +68,14 @@ const Register = () => {
                     <div className="relative">
                       <Field
                         type="email"
-                        className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                        className="w-full p-4 pr-12 text-sm border border-gray-800 rounded-lg shadow-sm"
                         name="email"
                         placeholder="email"
                       />
-                      <ErrorMessage name="email" component="div" />
+                      <div className="h-1">
+                        <ErrorMessage name="email" component="div"  className="text-xs text-[red]"/>
+                      </div>
+                      
                       <span className="absolute inset-y-0 inline-flex items-center right-4">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -94,11 +99,13 @@ const Register = () => {
                     <div className="relative">
                       <Field
                         type="nombre"
-                        className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                        className="w-full p-4 pr-12 text-sm border border-gray-800 rounded-lg shadow-sm"
                         name="nombre"
                         placeholder="nombre"
                       />
-                      <ErrorMessage name="name" component="div" />
+                      <div className="h-1">
+                        <ErrorMessage name="name" component="div" className="text-xs text-[red]"/>
+                      </div>
                     </div>
                   </section>
 
@@ -106,11 +113,13 @@ const Register = () => {
                     <div className="relative">
                       <Field
                         type="surname"
-                        className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                        className="w-full p-4 pr-12 text-sm border border-gray-800 rounded-lg shadow-sm"
                         name="surname"
                         placeholder="surname"
                       />
-                      <ErrorMessage name="surname" component="div" />
+                      <div className="h-1">
+                        <ErrorMessage name="surname" component="div" className="text-xs text-[red]"/>
+                      </div>
                     </div>
                   </section>
 
@@ -118,11 +127,13 @@ const Register = () => {
                     <div className="relative">
                       <Field
                         type="password"
-                        className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                        className="w-full p-4 pr-12 text-sm border border-gray-800 rounded-lg shadow-sm"
                         placeholder="Enter password"
                         name="password"
                       />
-                      <ErrorMessage name="password" component="div" />
+                      <div className="h-1">
+                        <ErrorMessage name="password" component="div" className="text-xs text-[red]"/>
+                      </div>
                       <span className="absolute inset-y-0 inline-flex items-center right-4">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -149,15 +160,15 @@ const Register = () => {
                   </section>
                   <div className="flex items-center justify-between">
                     <p className="text-sm text-gray-500">
-                      account?
-                      <a className="underline" href="/Login">
-                        Sign In
+                      Ya tenés cuenta?
+                      <a className="underline px-2" href="/Login">
+                        Ingresá
                       </a>
                     </p>
                     <button
                       type="submit"
                       disabled={!formik.isValid}
-                      className="inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-emerald-400 rounded-lg"
+                      className="inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-emerald-400 rounded-lg border border-gray-800 hover:bg-[#8FE3CF]"
                     >
                       Registrase
                     </button>
