@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../../features/user/authSlice";
 
 const NavBar = () => {
-  const [loggeado, setLoggeado] = useState(null);
+  const [isLog, setIsLog] = useState('');
   const dispatch = useDispatch();
 
   const Logout = () => {
@@ -15,8 +15,9 @@ const NavBar = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("profile"));
-    setLoggeado(user);
-    console.log(loggeado);
+    user ? setIsLog(true) : setIsLog(false)
+    
+    console.log(isLog);
   }, []);
 
   return (
@@ -81,24 +82,20 @@ const NavBar = () => {
                 Panel General
               </Link>
             </li>
-            {loggeado == null ? (
-              <>
+            {!isLog ? (
                 <Link
                   to="/Login"
                   className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
                 >
                   Login
                 </Link>
-              </>
             ) : (
-              <>
                 <button
                   onClick={Logout()}
                   className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
                 >
                   Logout
                 </button>
-              </>
             )}
           </ul>
         </div>

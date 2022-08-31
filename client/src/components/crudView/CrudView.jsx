@@ -29,7 +29,6 @@ const CrudView = () => {
 
     useEffect(() => {
         if(incomesState === 'succeeded' && outcomesState === 'succeeded'){
-            console.log([...incomesMovement, ...outcomesMovement])
             dispatch(synchroDbMovements([...incomesMovement, ...outcomesMovement]))
         }
     }, [incomesMovement, outcomesMovement])

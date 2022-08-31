@@ -8,32 +8,31 @@ const initialState = {
 }
 
 export const fetchIncomesAPI = createAsyncThunk('expenses/fetchIncomes', async () => {
-    const response = await axios.get('/incomes');
+    const response = await axios.get('/incomes', {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     const incomes = response.data;
     return incomes;
 })
 
 export const saveIncomeAPI = createAsyncThunk('expenses/saveIncome', async (values) => {
-    console.log(values)
-    const response = await axios.post('/incomes', values);
+    const response = await axios.post('/incomes', values, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     return response;
 })
 
 export const getIncomeByIdAPI = createAsyncThunk('expenses/getIncomeById', async (id) => {
-    const response = await axios.get(`incomes/id=${id}`);
+    const response = await axios.get(`incomes/id=${id}`, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     const outcome = response.data;
     return outcome;
 })
 
 export const deleteIncomeAPI = createAsyncThunk('expenses/deleteIncome', async (values) => {
     const {id} = values;
-    const response = await axios.delete(`/incomes/id=${id}`);
+    const response = await axios.delete(`/incomes/id=${id}`, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     return response;
 })
 
 export const updateIncomeAPI = createAsyncThunk('expenses/updateIncome', async (values) => {
     const {id} = values;
-    const response = await axios.patch(`/incomes/id=${id}`, values);
+    const response = await axios.patch(`/incomes/id=${id}`, values, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     return response;
 })
 
@@ -67,8 +66,7 @@ export const incomesSlice = createSlice({
         }).addCase(fetchIncomesAPI.fulfilled, (state, action) => {
             state.status = 'succeeded';
             const loadedIncomes = action.payload;
-            console.log(loadedIncomes)
-            state.incomes = loadedIncomes;
+            loadedIncomes.errors ==='There is not data'? state.incomes = [] : state.incomes =loadedIncomes
         })
     }
 })
