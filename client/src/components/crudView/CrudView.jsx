@@ -35,7 +35,7 @@ const CrudView = () => {
 
   return (
     // <div className='lg:w-6/12 xl:w-3/12 px-4 mx-auto'>
-    <div className=' px-24 py-12 mx-auto bg-[#8FE3CF]'>    
+    <div className=' px-24 py-12 mx-auto'>    
         <BalanceCard/>
         <div className="flex items-center justify-around xl:justify-center flex-wrap">
             <div className="my-3">
