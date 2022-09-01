@@ -6,18 +6,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../../features/user/authSlice";
 
 const NavBar = () => {
-  const [loggeado, setLoggeado] = useState(null);
+  const [isLog, setIsLog] = useState(false);
   const dispatch = useDispatch();
 
   const Logout = () => {
     dispatch(setLogout());
   };
 
+  const { user } = useSelector((state) => ({ ...state.auth }));
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("profile"));
-    setLoggeado(user);
-    console.log(loggeado);
-  }, []);
+    const l = JSON.parse(localStorage.getItem("profile"));
+    if (l == null) {
+      setIsLog(false);
+    } else {
+      setIsLog(true);
+    }
+  }, [user]);
 
   return (
     <nav className=" px-2 sm:px-4 py-2.5 dark:bg-gray-900">
@@ -81,24 +86,20 @@ const NavBar = () => {
                 Panel General
               </Link>
             </li>
-            {loggeado == null ? (
-              <>
-                <Link
-                  to="/Login"
-                  className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
-                >
-                  Login
-                </Link>
-              </>
+            {isLog == false ? (
+              <Link
+                to="/Login"
+                className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
+              >
+                Login
+              </Link>
             ) : (
-              <>
-                <button
-                  onClick={Logout()}
-                  className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
-                >
-                  Logout
-                </button>
-              </>
+              <button
+                onClick={Logout}
+                className="border border-black bg-[#8FE3CF] hover:bg-red-700 text-white font-medium py-2 px-5 rounded-lg"
+              >
+                Logout
+              </button>
             )}
           </ul>
         </div>

@@ -8,44 +8,43 @@ const initialState = {
 }
 
 export const fetchOutcomesAPI = createAsyncThunk('expenses/fetchOutcomes', async () => {
-    const response = await axios.get('/bills/all');
+    const response = await axios.get('/bills/all', {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     const outcomes = response.data;
     return outcomes;
 })
 
 export const saveOutcomeAPI = createAsyncThunk('expenses/saveOutcome', async (values, headers) => {
-    console.log(values)
-    const response = await axios.post('/bills', values, headers);
+    const response = await axios.post('/bills', values, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     return response;
 })
 
-export const getOutcomesByCategoryAPI = createAsyncThunk('expenses/getOutcomesByCategory', async (category) => {
-    const response = await axios.get(`/bills/category${category}`);
+export const getOutcomesByCategoryAPI = createAsyncThunk('expenses/ {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }}', async (category) => {
+    const response = await axios.get(`/bills/category${category}`,config);
     const outcomes = response.data;
     return outcomes;
 })
 
 export const deleteOutcomeAPI = createAsyncThunk('expenses/deleteOutcome', async (values) => {
     const {id} = values;
-    const response = await axios.put(`/bills/delete${id}?id=${id}`);
+    const response = await axios.put(`/bills/delete${id}?id=${id}`, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     return response;
 })
 
 export const getOutcomeByNameAPI = createAsyncThunk('expenses/getOutcomeByName', async (name) => {
-    const response = await axios.get(`/bills/find-by-name${name}`);
+    const response = await axios.get(`/bills/find-by-name${name}`, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     const outcome = response.data;
     return outcome;
 })
 
 export const getOutcomeByIdAPI = createAsyncThunk('expenses/getOutcomeById', async (id) => {
-    const response = await axios.get(`/bills/find${id}`);
+    const response = await axios.get(`/bills/find${id}`, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     const outcome = response.data;
     return outcome;
 })
 
 export const updateOutcomeAPI = createAsyncThunk('expenses/updateOutcome', async (values) => {
     const {id} = values;
-    const response = await axios.put(`/bills/update${id}?id=${id}`, values);
+    const response = await axios.put(`/bills/update${id}?id=${id}`, values,  {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     return response;
 })
 
@@ -79,7 +78,6 @@ export const outcomesSlice = createSlice({
         }).addCase(fetchOutcomesAPI.fulfilled, (state, action) => {
             state.status = 'succeeded';
             const loadedOutcomes = action.payload;
-            console.log(loadedOutcomes)
             state.outcomes = loadedOutcomes;
         })
     }
@@ -91,6 +89,6 @@ export const {deleteOutcomeMov, modifyOutcomeMov, addOutcomeMov} = outcomesSlice
 
 export const getOutcomeBalance = state =>{
     const outcomes = state.outcomes.outcomes;
-    const balance =  outcomes.map(outcome=>Number(outcome.amount)).reduce((pv,cv)=> { return pv+cv}, 0)
-    return balance
+        const balance =  outcomes.map(outcome=>Number(outcome.amount)).reduce((pv,cv)=> { return pv+cv}, 0)
+        return balance
 }
