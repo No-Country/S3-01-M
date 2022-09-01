@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import fisalupng from "../../assets/imgs/fisalu.png";
+import module from "./LoadingToRedirect.module.css";
 
 const LoadingToRedirect = () => {
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(3);
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,8 +15,10 @@ const LoadingToRedirect = () => {
     return () => clearInterval(interval);
   }, [count, navigate]);
   return (
-    <div style={{ marginTop: "100px" }}>
-      <h5>Debe logearse , Redirigiendo en {count} segundos</h5>
+    <div className={module.container}>
+      <h1>Debe logearse , Redirigiendo en {count} segundos</h1>
+
+      <img src={fisalupng} alt="new"></img>
     </div>
   );
 };
