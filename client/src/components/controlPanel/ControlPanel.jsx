@@ -4,7 +4,7 @@ import MovementsContainer from '../movements/MovementsContainer'
 
 const ControlPanel = () => {
   return (
-    <div className='flex flex-col lg:flex-row lg:grid grid-cols-2 bg-[#8FE3CF]'>
+    <div className='flex flex-col lg:flex-row lg:grid grid-cols-2'>
         <div>
         <CrudView/>
         </div>

@@ -1,10 +1,71 @@
 import React from 'react'
+import { useState } from 'react';
 import { useDispatch} from 'react-redux'
 import { saveIncomeAPI, addIncomeMov } from '../../features/incomes/incomesSlice';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBurger, faMoneyBill, faHandHoldingDollar, faFaucetDrip, faHouse, faBriefcaseMedical, faHandSparkles, faReceipt, faShirt, faHandHoldingHeart, faFilm, faHouseCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Income = () => {
     const dispatch = useDispatch();
+    const [logo, setLogo] = useState(faMoneyBill)
+    const [selectedOption, setSelectedOption] = useState('Trabajo')
+  
+    const changeLogo = (e)=>{
+      const fontAwesomeIcons = [
+      {
+        fontAwesomeIcon: faBurger,
+        category: 'Alimentacion'
+      },
+      {
+        fontAwesomeIcon: faMoneyBill,
+        category: 'Trabajo'
+      },
+      {
+        fontAwesomeIcon: faHandHoldingDollar,
+        category: 'Venta'
+      },
+      {
+        fontAwesomeIcon: faHouseCircleCheck,
+        category: 'Alquiler'
+      },
+      {
+        fontAwesomeIcon: faFaucetDrip,
+        category: 'Servicios'
+      },
+      {
+        fontAwesomeIcon: faHouse,
+        category: 'Vivienda'
+      },
+      {
+        fontAwesomeIcon: faBriefcaseMedical,
+        category: 'Salud'
+      },
+      {
+        fontAwesomeIcon: faHandSparkles,
+        category: 'Limpieza'
+      },
+      {
+        fontAwesomeIcon: faReceipt,
+        category: 'Impuestos'
+      },
+      {
+        fontAwesomeIcon: faShirt,
+        category: 'Indumentaria'
+      },
+      {
+        fontAwesomeIcon: faHandHoldingHeart,
+        category: 'Cuidado personal'
+      },
+      {
+        fontAwesomeIcon: faFilm,
+        category: 'Entretenimientos'
+      },
+    ];
+    const icon = fontAwesomeIcons.find((icon)=>icon.category === e.target.value)
+      setSelectedOption(e.target.value)
+      setLogo(icon.fontAwesomeIcon)
+    }
 
     const categories = ['Trabajo', 'Venta', 'Alquiler']
 
@@ -18,8 +79,7 @@ const Income = () => {
     <>
         {/* Título */}
         <div className="flex items-center justify-center font-black m-3 mb-12">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10  text-red-600 animate-bounce"  role="img" width="48px" height="48px" viewBox="0 0 24 24" aria-labelledby="dolarIconTitle" stroke="#3ACC6F" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#000"> <title id="dolarIconTitle">Dolar</title> <path d="M12 4L12 6M12 18L12 20M15.5 8C15.1666667 6.66666667 14 6 12 6 9 6 8.5 7.95652174 8.5 9 8.5 13.140327 15.5 10.9649412 15.5 15 15.5 16.0434783 15 18 12 18 10 18 8.83333333 17.3333333 8.5 16"/> </svg>
-            <h1 className="tracking-wide text-3xl text-gray-900">Agrega un ingreso</h1>
+            <h1 className="tracking-wide text-3xl text-white">Agrega un ingreso</h1>
         </div>
         {/* ---------Formulario-------- */}
         <Formik initialValues={{
@@ -30,7 +90,7 @@ const Income = () => {
             description: '',
           }}
           onSubmit={({amount, category, name, date, description}, { resetForm })=>{           
-                        submitIncomes(amount, category, name, date, description)
+                        submitIncomes(amount, selectedOption, name, date, description)
                         resetForm();
                     }}
         >
@@ -39,9 +99,9 @@ const Income = () => {
                 <div className="flex justify-between items-center mb-3">
                     {/* Categorías */}
                     <div className="inline-flex items-center self-start">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="border border-black h-8 w-8 mr-3 bg-gradient-to-r from-pink-600 to-red-600 shadow-lg rounded p-1.5 text-gray-100" role="img" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="userIconTitle" stroke="#fff" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#fff"> <title id="userIconTitle">User</title> <path strokeLinecap="round" d="M5.5,19.5 C7.83333333,18.5 9.33333333,17.6666667 10,17 C11,16 8,16 8,11 C8,7.66666667 9.33333333,6 12,6 C14.6666667,6 16,7.66666667 16,11 C16,16 13,16 14,17 C14.6666667,17.6666667 16.1666667,18.5 18.5,19.5"/> <circle cx="12" cy="12" r="10"/> </svg>
+                        <FontAwesomeIcon icon={logo} className="border border-black h-4 w-4 mr-3 bg-gradient-to-r from-green-600 to-green-600 shadow-lg rounded p-1.5 text-gray-100"/>
                         <label htmlFor="category"></label>
-                        <Field component="select" name="category" id="category" className="border border-black rounded-md p-1 font-bold text-gray-900" >
+                        <Field component="select" name="category" id="category" value={selectedOption} onChange={changeLogo}  className="border border-black rounded-md p-1 font-bold text-gray-900" >
                                 {categories.map((category, index)=>
                                 <option key={category+index} value={category}>{category}</option>)
                                 }

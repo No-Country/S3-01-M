@@ -2,7 +2,7 @@ import {createSlice, current} from '@reduxjs/toolkit'
 
 const initialState = {
     expenses: [],
-    category:'',
+    category:[],
 }
 
 export const expensesSlice = createSlice({
@@ -30,6 +30,7 @@ export const expensesSlice = createSlice({
             foundMovement.description = description;
         },
         setCategory:(state,action)=>{
+            console.log(action.payload)
             state.category= action.payload
         },
     },
@@ -42,7 +43,24 @@ export default expensesSlice.reducer
 export const getMovements = state => state.expenses.expenses;
 
 /* Borrar, es para poder hacer el onclick hasta que este la validación de usuario */
-export const getByCategories = state => state.expenses.category;
+export const getByCategories = state=> state.expenses.category;
+
+export const groupCategories = (state)=>{
+    if(state.expenses.expenses){
+        const addCategory = state.expenses.expenses.map((element) => ({
+            ...element, category: element.incomeCategory || element.billCategory 
+        }));
+    
+        const groups = addCategory.reduce((groups, item) => {
+            const group = (groups[item.category] || []);
+            group.push(item);
+            groups[item.category] = group;
+            return groups;
+          }, {});
+          return groups;
+    }
+}
+
 
 // export const getBalance = state =>{
 //     const expenses = state.expenses.expenses;
