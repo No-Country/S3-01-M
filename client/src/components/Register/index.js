@@ -7,10 +7,15 @@ import { register } from "../../features/user/authSlice";
 
 const Register = () => {
   const [form, setForm] = useState();
+  const [typePassword, setTypePassword] = useState('password')
 
   const { loading, error, user } = useSelector((state) => ({ ...state.auth }));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handlePassword = ()=>{
+    typePassword==='password'? setTypePassword('text'): setTypePassword('password');
+  }
 
   useEffect(() => {
     error && toast.error(error);
@@ -53,14 +58,14 @@ const Register = () => {
             <section className="relative flex flex-wrap lg:h-screen lg:items-center">
               <div className="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
               <div className="max-w-lg mx-auto text-center">
-                  <h1 className="text-2xl font-bold sm:text-3xl">
+                  <h1 className="text-2xl font-bold sm:text-3xl text-white">
                     Regístrate!
                   </h1>
-                  <p className="mt-4 text-xl text-gray-500">
+                  <p className="mt-4 text-xl text-white">
                     ¿no sabes en que gastas tu sueldo? 
                   </p>
-                  <p className="mt-4 text-lg text-gray-500">
-                    Con <span className="text-black font-semibold">Fisalu</span> olvidate de ese problema.
+                  <p className="mt-4 text-lg text-white">
+                    Con <span className="text-[#00FFB9] font-semibold">Fisalu</span> olvidate de ese problema.
                   </p>
                 </div>
                 <Form className="max-w-md mx-auto mt-8 mb-0 space-y-4">
@@ -126,7 +131,7 @@ const Register = () => {
                   <section>
                     <div className="relative">
                       <Field
-                        type="password"
+                        type={typePassword}
                         className="w-full p-4 pr-12 text-sm border border-gray-800 rounded-lg shadow-sm"
                         placeholder="Enter password"
                         name="password"
@@ -141,6 +146,7 @@ const Register = () => {
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
+                          onClick={handlePassword}
                         >
                           <path
                             strokeLinecap="round"
@@ -159,7 +165,7 @@ const Register = () => {
                     </div>
                   </section>
                   <div className="flex items-center justify-between">
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-white">
                       Ya tenés cuenta?
                       <a className="underline px-2" href="/Login">
                         Ingresá
