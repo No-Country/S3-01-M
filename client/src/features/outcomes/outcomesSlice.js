@@ -18,15 +18,15 @@ export const saveOutcomeAPI = createAsyncThunk('expenses/saveOutcome', async (va
     return response;
 })
 
-export const getOutcomesByCategoryAPI = createAsyncThunk('expenses/ {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }}', async (category) => {
-    const response = await axios.get(`/bills/category${category}`,config);
+export const getOutcomesByCategoryAPI = createAsyncThunk('expenses/', async (category) => {
+    const response = await axios.get(`/bills/category${category}`,{headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     const outcomes = response.data;
     return outcomes;
 })
 
 export const deleteOutcomeAPI = createAsyncThunk('expenses/deleteOutcome', async (values) => {
     const {id} = values;
-    const response = await axios.put(`/bills/delete${id}?id=${id}`, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
+    const response = await axios.put(`/bills/delete${id}?id=${id}`, values, {headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("profile")).jwtToken}` }});
     return response;
 })
 
