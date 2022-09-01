@@ -13,6 +13,8 @@ const NavBar = () => {
     dispatch(setLogout());
   };
 
+  const { user } = useSelector((state) => ({ ...state.auth }));
+
   useEffect(() => {
     const l = JSON.parse(localStorage.getItem("profile"));
     if (l == null) {
@@ -22,7 +24,7 @@ const NavBar = () => {
     }
     console.log(isLog);
     console.log(l);
-  }, []);
+  }, [user]);
 
   return (
     <nav className=" px-2 sm:px-4 py-2.5 dark:bg-gray-900">
