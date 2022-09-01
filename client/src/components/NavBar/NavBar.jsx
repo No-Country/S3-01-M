@@ -22,8 +22,6 @@ const NavBar = () => {
     } else {
       setIsLog(true);
     }
-    console.log(isLog);
-    console.log(l);
   }, [user]);
 
   return (

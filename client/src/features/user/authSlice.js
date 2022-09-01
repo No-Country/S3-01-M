@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "./api";
+import Swal from "sweetalert2";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -7,9 +8,11 @@ export const login = createAsyncThunk(
     try {
       const response = await api.signIn(formValue);
       toast.success("Login Successfully");
+      Swal.fire("Login Successfully");
       navigate("/");
       return response.data;
     } catch (err) {
+      Swal.fire("Contraseña o mail incorrecta");
       return rejectWithValue(err.response.data);
     }
   }
@@ -21,9 +24,11 @@ export const register = createAsyncThunk(
     try {
       const response = await api.signUp(formValue);
       toast.success("Register Successfully");
+      Swal.fire("Register Successfully");
       navigate("/");
       return response.data;
     } catch (err) {
+      Swal.fire("Los datos son erroneos");
       return rejectWithValue(err.response.data);
     }
   }
@@ -43,6 +48,7 @@ const authSlice = createSlice({
     setLogout: (state, action) => {
       localStorage.clear();
       state.user = null;
+      Swal.fire("Nos vemos");
     },
   },
   extraReducers: {
@@ -52,7 +58,7 @@ const authSlice = createSlice({
     [login.fulfilled]: (state, action) => {
       state.loading = false;
       localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
-      console.log(action.payload)
+      console.log(action.payload);
       state.user = action.payload;
     },
     [login.rejected]: (state, action) => {
