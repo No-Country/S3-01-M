@@ -3,6 +3,8 @@ import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteOutcomeAPI, deleteOutcomeMov, updateOutcomeAPI, modifyOutcomeMov } from '../../features/outcomes/outcomesSlice';
 import { deleteIncomeAPI, deleteIncomeMov, updateIncomeAPI, modifyIncomeMov } from '../../features/incomes/incomesSlice';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBurger, faMoneyBill, faHandHoldingDollar, faFaucetDrip, faHouse, faBriefcaseMedical, faHandSparkles, faReceipt, faShirt, faHandHoldingHeart, faFilm, faHouseCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const MovementCard = (movement) => {
     const {id, amount, name, date, description, billCategory, incomeCategory} = movement.movement;
@@ -53,6 +55,66 @@ const MovementCard = (movement) => {
         setIsDisabled(true)
     }
 
+    const handleIcon = ()=>{
+        const fontAwesomeIcons = [
+            {
+              fontAwesomeIcon: faBurger,
+              category: 'Alimentacion'
+            },
+            {
+              fontAwesomeIcon: faMoneyBill,
+              category: 'Trabajo'
+            },
+            {
+              fontAwesomeIcon: faHandHoldingDollar,
+              category: 'Venta'
+            },
+            {
+                fontAwesomeIcon: faHouseCircleCheck,
+                category: 'Alquiler'
+              },
+            {
+              fontAwesomeIcon: faFaucetDrip,
+              category: 'Servicios'
+            },
+            {
+              fontAwesomeIcon: faHouse,
+              category: 'Vivienda'
+            },
+            {
+              fontAwesomeIcon: faBriefcaseMedical,
+              category: 'Salud'
+            },
+            {
+              fontAwesomeIcon: faHandSparkles,
+              category: 'Limpieza'
+            },
+            {
+              fontAwesomeIcon: faReceipt,
+              category: 'Impuestos'
+            },
+            {
+              fontAwesomeIcon: faShirt,
+              category: 'Indumentaria'
+            },
+            {
+              fontAwesomeIcon: faHandHoldingHeart,
+              category: 'Cuidado personal'
+            },
+            {
+              fontAwesomeIcon: faFilm,
+              category: 'Entretenimientos'
+            },
+          ];
+        if(incomeCategory){
+            const icon = fontAwesomeIcons.find((icon)=>icon.category === incomeCategory.charAt(0) + incomeCategory.slice(1).toLowerCase().split('_').join(' '))
+            return icon.fontAwesomeIcon
+        }else{
+            const icon = fontAwesomeIcons.find((icon)=>icon.category === billCategory.charAt(0) + billCategory.slice(1).toLowerCase().split('_').join(' '))
+            return icon.fontAwesomeIcon
+        } 
+    }
+
 
   return (
     <>
@@ -60,7 +122,13 @@ const MovementCard = (movement) => {
             <td className="py-2 whitespace-nowrap">
                 <div className="flex items-center justify-center">
                     <div className="rounded-full" width="30" height="30"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6  bg-gradient-to-r from-pink-600 to-red-600 shadow-lg rounded p-1.5 text-gray-100" role="img" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="userIconTitle" stroke="#fff" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#fff"> <title id="userIconTitle">User</title> <path strokeLinecap="round" d="M5.5,19.5 C7.83333333,18.5 9.33333333,17.6666667 10,17 C11,16 8,16 8,11 C8,7.66666667 9.33333333,6 12,6 C14.6666667,6 16,7.66666667 16,11 C16,16 13,16 14,17 C14.6666667,17.6666667 16.1666667,18.5 18.5,19.5"/> <circle cx="12" cy="12" r="10"/> </svg> 
+                       {
+                        incomeCategory? 
+                        <FontAwesomeIcon icon={handleIcon()} className="h-3 w-3  bg-gradient-to-r from-green-600 to-green-600 shadow-lg rounded p-1.5 text-gray-100"/>
+                       :
+                       <FontAwesomeIcon icon={handleIcon()} className="h-3 w-3  bg-gradient-to-r from-pink-600 to-red-600 shadow-lg rounded p-1.5 text-gray-100"/>
+                       }
+                        
                     </div>
                 </div>
             </td>
