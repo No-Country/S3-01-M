@@ -7,8 +7,8 @@ export const login = createAsyncThunk(
   async ({ formValue, navigate, toast }, { rejectWithValue }) => {
     try {
       const response = await api.signIn(formValue);
-      toast.success("Login Successfully");
-      Swal.fire("Login Successfully");
+      toast.success("Login exitoso");
+      Swal.fire("Login exitoso");
       navigate("/");
       return response.data;
     } catch (err) {
@@ -23,8 +23,8 @@ export const register = createAsyncThunk(
   async ({ formValue, navigate, toast }, { rejectWithValue }) => {
     try {
       const response = await api.signUp(formValue);
-      toast.success("Register Successfully");
-      Swal.fire("Register Successfully");
+      toast.success("Registro exitoso");
+      Swal.fire("Registro exitoso");
       navigate("/");
       return response.data;
     } catch (err) {
