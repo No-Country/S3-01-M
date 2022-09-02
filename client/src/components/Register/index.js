@@ -83,7 +83,7 @@ const Register = () => {
                         placeholder="email"
                       />
                       <div className="h-1">
-                        <ErrorMessage name="email" component="div"  className="text-xs text-[red]"/>
+                        <ErrorMessage name="email" component="div"  className="text-xs text-[#00FFB9]"/>
                       </div>
                       
                       <span className="absolute inset-y-0 inline-flex items-center right-4">
@@ -114,7 +114,7 @@ const Register = () => {
                         placeholder="nombre"
                       />
                       <div className="h-1">
-                        <ErrorMessage name="name" component="div" className="text-xs text-[red]"/>
+                        <ErrorMessage name="name" component="div" className="text-xs text-[#00FFB9]"/>
                       </div>
                     </div>
                   </section>
@@ -128,7 +128,7 @@ const Register = () => {
                         placeholder="surname"
                       />
                       <div className="h-1">
-                        <ErrorMessage name="surname" component="div" className="text-xs text-[red]"/>
+                        <ErrorMessage name="surname" component="div" className="text-xs text-[#00FFB9]"/>
                       </div>
                     </div>
                   </section>
@@ -142,7 +142,7 @@ const Register = () => {
                         name="password"
                       />
                       <div className="h-1">
-                        <ErrorMessage name="password" component="div" className="text-xs text-[red]"/>
+                        <ErrorMessage name="password" component="div" className="text-xs text-[#00FFB9]"/>
                       </div>
                       <span className="absolute inset-y-0 inline-flex items-center right-4">
                         <svg

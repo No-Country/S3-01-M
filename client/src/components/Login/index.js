@@ -88,7 +88,7 @@ const Login = () => {
                         placeholder="username"
                       />
                       <div className="h-1">
-                        <ErrorMessage name="email" component="div" className="text-xs text-[red]"/>
+                        <ErrorMessage name="email" component="div" className="text-xs text-[#00FFB9]"/>
                       </div>
                       <span className="absolute inset-y-0 inline-flex items-center right-4">
                         <svg
@@ -117,7 +117,7 @@ const Login = () => {
                         name="password"
                       />
                       <div className="h-1">
-                        <ErrorMessage name="password" component="div" className="text-xs text-[red]"/>
+                        <ErrorMessage name="password" component="div" className="text-xs text-[#00FFB9]"/>
                       </div>
                       <span className="absolute inset-y-0 inline-flex items-center right-4">
                         <svg
