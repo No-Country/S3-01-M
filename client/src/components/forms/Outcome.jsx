@@ -151,7 +151,7 @@ const Outcome = () => {
                     focus:ring-sky-500
                     focus:invalid:border-red-500 focus:invalid:ring-red-500" id="description" name="description" placeholder="Escribe algo"></Field>
                         {/* Botón agregar */}
-                        <button type='submit' className="border border-black w-full px-4 py-1.5 rounded-md shadow-lg bg-green-400 font-medium text-gray-100 block transition duration-300">
+                        <button type='submit' className="border border-black w-full px-4 py-1.5 rounded-md shadow-lg bg-green-400 hover:bg-green-500 font-medium text-gray-100 block transition duration-300">
                             <span className="hidden">Sending</span>
                             <span >Agregar</span>
                         </button> 

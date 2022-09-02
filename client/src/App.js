@@ -10,6 +10,7 @@ import ControlPanel from "./components/controlPanel/ControlPanel";
 import Estadisticas from "./components/Estadisticas";
 import { setUser } from "./features/user/authSlice";
 import PrivateRoute from "./components/Private/PrivateRoute";
+import Team from "./components/Team/Team";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/team" element={<Team />}></Route>
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Register" element={<Register />}></Route>
           <Route

@@ -50,7 +50,7 @@ const Balance = () => {
                         </div>
                     </div>
                 </div>
-                <p className="text-sm text-blueGray-500 mt-4"><span className="text-emerald-500 mr-2"> 3.48%</span><span className="whitespace-nowrap">Since last month</span></p>
+                <p className="text-sm text-blueGray-500 mt-4 font-semibold"><span className="text-emerald-500 mr-2"> 3.48%</span><span className="whitespace-nowrap">Since last month</span></p>
                 </div>
             </div>
         </div>
