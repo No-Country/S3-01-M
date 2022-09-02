@@ -38,6 +38,8 @@ npm start
 ### Backend
 - [Java](https://www.java.com/es/) - Lenguaje.
 - [Spring Boot](https://spring.io/) - Framework de Java.
+- [Spring Security](https://spring.io/projects/spring-security) - Framework de control y autenticación.
+- [MySQL](https://www.mysql.com/) - Base de datos relacional.
 
 
 ## Autores ✒️
