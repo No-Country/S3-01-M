@@ -2,7 +2,7 @@ import React from "react";
 /* Borrar, es para poder hacer el onclick hasta que este la validación de usuario */
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBurger, faMoneyBill, faHandHoldingDollar, faFaucetDrip, faHouse, faBriefcaseMedical, faHandSparkles, faReceipt, faShirt, faHandHoldingHeart, faFilm, faHouseCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPlus,faBurger, faMoneyBill, faHandHoldingDollar, faFaucetDrip, faHouse, faBriefcaseMedical, faHandSparkles, faReceipt, faShirt, faHandHoldingHeart, faFilm, faHouseCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { setCategory } from "../../features/expenses/expensesSlice";
 /* Borrar, es para poder hacer el onclick hasta que este la validación de usuario */
 import "./CardEstadistic.css";
@@ -74,7 +74,7 @@ const CardEstadistic = ({expense, title}) => {
 }
 
   return (
-        <div className="shadow-md shadow-indigo-500/50 w-[250px] h-[200px] bg-white mt-2 rounded-lg p-6  hover:bg-[#FFD43B] cursor-pointer" onClick={handleCategory}>
+      <div className="shadow-md shadow-indigo-500/50 w-[250px] h-[200px] bg-white mt-2 rounded-lg p-6  hover:bg-[#FFD43B] ">
       <FontAwesomeIcon
           icon={getIcon()}
           className="w-8 h-8"
@@ -82,13 +82,13 @@ const CardEstadistic = ({expense, title}) => {
             filter:
               "invert(44%) sepia(31%) saturate(1462%) hue-rotate(249deg) brightness(95%) contrast(82%)",
           }}/>
-      <p className="font-sans text-gray-800 text-base mb-2">{modifiedTitle}</p>
-      <p className="font-sans text-gray-800 text-2xl mb-2">$ {totalAmount()}</p>
+      <p className="font-sans text-gray-800 text-3xl mb-2">${totalAmount()}</p>
+      <p className="font-sans text-gray-800 text-base mb-2 font-semibold">Categoría: <span className="font-light">{modifiedTitle}</span></p>
       <div className="flex flex-row items-end">
-        <p className="bg-[#5146ed] rounded-lg text-xs text-white py-2 px-4 ">
-          % 70+
-        </p>
-        <p className="text-xs text-gray-800  ml-2 p-1">Than last month</p>
+        <div className="bg-[#5146ed] hover:bg-[#3D52D6] rounded-lg text-xs text-white py-2 px-4 text-md font-semibold cursor-pointer" onClick={handleCategory}>
+          Ver 
+          <FontAwesomeIcon className="pl-2" icon={faPlus} />
+        </div>
       </div>
     </div>
   );

@@ -68,7 +68,7 @@ const MovementCardStatistics = (movement) => {
 
   return (
     <>
-        <tr>
+        <tr className='hover:bg-gray-100'>
             <td className="py-2 whitespace-nowrap">
                 <div className="flex items-center justify-center">
                     <div className="rounded-full" width="30" height="30"> 
@@ -84,26 +84,26 @@ const MovementCardStatistics = (movement) => {
             </td>
                 <td className="p-2 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div type='text' className="font-medium text-gray-800 bg-white max-w-[90px]">{name}</div>
+                        <div type='text' className="font-medium text-gray-800 bg-transparent max-w-[90px]">{name}</div>
                     </div>
                 </td>
                 <td className="p-2 whitespace-nowrap">
                     {
                         description? 
-                        (<div type="text" className="text-left max-w-[90px] bg-white">{description}</div>): 
-                        (<div type="text" className="text-center pr-12 max-w-[90px] bg-white">-</div>) 
+                        (<div type="text" className="text-left max-w-[90px] bg-transparent">{description}</div>): 
+                        (<div type="text" className="text-center pr-12 max-w-[90px] bg-transparent">-</div>) 
                     }
                 </td>
                 <td className="p-2 whitespace-nowrap">
                     {
                         movement.movement.incomeCategory? 
-                        (<div type="number" className="text-left font-medium text-green-500 max-w-[90px] bg-white">{amount}</div>):
-                        (<div type="number" className="text-left font-medium text-red-500 max-w-[90px] bg-white">{amount}</div>)
+                        (<div type="number" className="text-left font-medium text-green-500 max-w-[90px] bg-transparent">{amount}</div>):
+                        (<div type="number" className="text-left font-medium text-red-500 max-w-[90px] bg-transparent">{amount}</div>)
                     }
                     
                 </td>
                 <td className="p-2 whitespace-nowrap">
-                    <div type="date" className="text-md text-right max-w-[120px] bg-white">{date}</div>
+                    <div type="date" className="text-md text-right max-w-[120px] bg-transparent">{date}</div>
                 </td>
                 <td className="py-2 whitespace-nowrap">
                     <div className="flex items-center justify-center">

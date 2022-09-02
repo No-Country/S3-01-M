@@ -4,6 +4,9 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { login } from "../../features/user/authSlice";
+import piggy from "../../assets/imgs/piggy.svg"
+import tinyCloud from "../../assets/imgs/nubechicas-svg.svg"
+import mediumCloud from "../../assets/imgs/nubemediana.svg"
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -57,9 +60,11 @@ const Login = () => {
       >
         {(formik) => (
           <div>
-            <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-              <div className="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
-                <div className="max-w-lg mx-auto text-center">
+            <section className="relative flex flex-wrap lg:h-screen lg:items-center md:px-48 overflow-hidden">
+            <img src={tinyCloud} alt="" className="absolute bg-contain z-0 nube-chica"/>
+            <img src={mediumCloud} alt="" className="absolute bg-contain z-0 nube-mediana"/>
+              <div className="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24 z-40 ">
+                <div className="max-w-lg mx-auto text-center z-30">
                   <h1 className="text-2xl font-bold sm:text-3xl text-white">
                     Bienvenido!
                   </h1>
@@ -72,7 +77,7 @@ const Login = () => {
                 </div>
                 <Form
                   action=""
-                  className="max-w-md mx-auto mt-8 mb-0 space-y-4"
+                  className="max-w-md mx-auto mt-8 mb-0 space-y-4 z-30"
                 >
                   <div>
                     <div className="relative">
@@ -157,11 +162,18 @@ const Login = () => {
                 </Form>
               </div>
               <div className="relative w-full h-64 sm:h-96 lg:w-1/2 lg:h-full">
-                <img
+                {/* <img
                   className="absolute inset-0 object-cover w-full h-full"
                   src="https://www.hyperui.dev/photos/team-1.jpeg"
                   alt=""
-                />
+                /> */}
+                <div className="invisible lg:visible z-40 flex justify-center px-[5%] pt-[15%] flex-col content-center align-center text-center">
+                  <h1 className="text-6xl md:text-8xl font-bold text-white">FISALU<span className="text-[#8FE3CF]">.</span></h1>
+                  <h2 className="text-4xl md:text-5xl font-semibold text-[#06E2ED]">Finanzas saludables</h2>
+                  <div className="w-[70%] mx-auto z-10">
+                    <img src={piggy}></img>
+                  </div>
+                </div>
               </div>
             </section>
           </div>
