@@ -24,7 +24,7 @@ const categoryList = Object.values(movementsGroups);
 
 
   return (
-    <div className="min-h-screen md:px-48 flex flex-row justify-evenly py-6 flex-wrap lg:flex-nowrap min-w-[50%] bg-cover" style={{backgroundImage:`url(${background})`}}>
+    <div className="pt-[120px] min-h-screen md:px-48 flex flex-row justify-evenly py-6 flex-wrap lg:flex-nowrap min-w-[50%] bg-cover" style={{backgroundImage:`url(${background})`}}>
       <section>
         <div className="flex flex-row gap-6 flex-wrap">
           <div className="mx-auto max-w-[400px]">

@@ -46,7 +46,7 @@ const Team = () => {
         },
       ];
   return (
-    <div className="relative min-h-screen overflow-hidden ">
+    <div className="relative min-h-screen overflow-hidden pt-[80px]">
     <img src={tinyCloud} alt="" className="absolute bg-contain z-0 nube-chica"/>
     <img src={mediumCloud} alt="" className="absolute bg-contain z-0 nube-mediana"/>
       <div style={{clipPath: 'polygon(100% 15%, 0% 100%, 100% 100%)',background: "linear-gradient(0deg, rgba(0,204,153,1) 0%, rgba(48,108,201,1) 58%, rgba(102,0,255,1) 100%)"}} className="w-full bg-[#8FE3CF] absolute -z-50 min-h-screen bottom-0 right-0"></div>
@@ -57,7 +57,7 @@ const Team = () => {
           <a href='https://www.nocountry.tech/' className='font-semibold text-xl font-md text-white mt-2 hover:text-[#8FE3CF]'>No Country 🚀</a>
         </div>
         <div className="w-full flex flex-col justify-center">
-          <div className="container items-stretch mx-auto px-2 py-8 flex flex-row flex-wrap justify-center z-50">
+          <div className="container items-stretch mx-auto px-2 py-8 flex flex-row flex-wrap justify-center z-40">
             {team.map((i) => (
               <div
                 key={i.name}
