@@ -7,11 +7,16 @@ import { setLogout } from "../../features/user/authSlice";
 
 const NavBar = () => {
   const [isLog, setIsLog] = useState(false);
+  const [showNav, setShowNav] = useState(false)
   const dispatch = useDispatch();
 
   const Logout = () => {
     dispatch(setLogout());
   };
+
+  const handleNavbar = ()=>{
+    setShowNav(!showNav)
+  }
 
   const { user } = useSelector((state) => ({ ...state.auth }));
 
@@ -25,10 +30,10 @@ const NavBar = () => {
   }, [user]);
 
   return (
-    <nav className=" px-2 sm:px-4 py-2.5 bg-[#5A16F3]">
-      <div className="container flex flex-wrap justify-between items-center mx-auto">
+    <nav className=" sm:px-4 py-2.5 bg-[#5A16F3] relative">
+      <div className="container flex flex-wrap justify-between items-center mx-auto px-2">
         <Link to="/" className="flex items-center">
-          <img src={FisaluLogo} className="w-12" alt="Fisalu Logo" />
+          <img src={FisaluLogo} className="w-10 md:w-12" alt="Fisalu Logo" />
         </Link>
         <button
           data-collapse-toggle="navbar-default"
@@ -39,8 +44,9 @@ const NavBar = () => {
         >
           <span className="sr-only">Open main menu</span>
           <svg
+            onClick={handleNavbar}
             className="w-6 h-6"
-            fill="currentColor"
+            fill="#ffffff"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -64,10 +70,10 @@ const NavBar = () => {
             </li>
             <li>
               <Link
-                to="/perfil"
+                to="/team"
                 className="block px-5 text-[#fdea00] rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#8FE3CF] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                Perfil
+                Equipo
               </Link>
             </li>
             <li>
@@ -103,6 +109,58 @@ const NavBar = () => {
             )}
           </ul>
         </div>
+      </div>
+      <div className={showNav? "w-full absolute bg-[#5A16F3] m-0 px-2 z-50 visible drop-shadow-lg" : "w-full absolute bg-[#5A16F3] m-0 px-2 z-50 invisible"}>
+        <ul onClick={handleNavbar} className="flex flex-col items-center p-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0" >
+            <li>
+              <Link
+                to="/"
+                className="block py-2 pr-4 pl-3 text-white font-normal "
+                aria-current="page"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/team"
+                className="block py-2 pr-4 pl-3 text-white font-normal"
+              >
+                Equipo
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/estadisticas"
+                className="block py-2 pr-4 pl-3 text-white font-normal"
+              >
+                Estadisticas
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/control"
+                className="block py-2 pr-4 pl-3 text-white font-normal"
+              >
+                Panel General
+              </Link>
+            </li>
+            {isLog == false ? (
+              <Link
+                to="/Login"
+                className="text-white font-normal "
+              >
+                Login
+              </Link>
+            ) : (
+              <button
+                onClick={Logout}
+                className="text-white font-normal"
+              >
+                Logout
+              </button>
+            )}
+        </ul>
       </div>
     </nav>
   );
