@@ -34,7 +34,7 @@ const Team = () => {
           image: "https://media-exp1.licdn.com/dms/image/C4D03AQH8to93EyUTXA/profile-displayphoto-shrink_800_800/0/1644174259059?e=1667433600&v=beta&t=pqWHFG6q_eRCQtZvllQzBXIJejGOE4omygyTQRr7ZpA",
           github: "https://github.com/celsobrc",
           linkedin: "https://www.linkedin.com/in/celsojzabala/",
-          skills: ["JAVA","Springboot"],
+          skills: ["JAVA","Spring Boot", "Spring Security", "MySQL"],
         },
         {
           name: "Matias Silva",
