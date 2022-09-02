@@ -44,3 +44,19 @@ background: linear-gradient(0deg, rgba(0,204,153,1) 0%, rgba(48,108,201,1) 58%, 
 background-size: cover;
 background-repeat: no-repeat;
 }
+
+@keyframes move {
+  0% {
+      transform: translateX(-50vw);
+  }
+  100% {
+      transform: translateX(100vw); 
+  }
+}
+.nube-mediana{
+  animation: move 150s ease-out infinite;
+}
+
+.nube-chica{
+  animation: move 200s ease-out infinite;
+}
