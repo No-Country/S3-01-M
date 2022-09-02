@@ -17,7 +17,7 @@ const NavBar = () => {
   const handleNavbar = ()=>{
     setShowNav(!showNav)
   }
-
+  
   const { user } = useSelector((state) => ({ ...state.auth }));
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const NavBar = () => {
   }, [user]);
 
   return (
-    <nav className=" sm:px-4 py-2.5 bg-[#5A16F3] relative">
-      <div className="container flex flex-wrap justify-between items-center mx-auto px-2">
+    <nav className=" py-2.5 bg-[#5A16F3] relative ">
+      <div className="container flex flex-wrap justify-between items-center mx-auto px-2 ">
         <Link to="/" className="flex items-center">
           <img src={FisaluLogo} className="w-10 md:w-12" alt="Fisalu Logo" />
         </Link>
@@ -110,12 +110,12 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
-      <div className={showNav? "w-full absolute bg-[#5A16F3] m-0 px-2 z-50 visible drop-shadow-lg" : "w-full absolute bg-[#5A16F3] m-0 px-2 z-50 invisible"}>
-        <ul onClick={handleNavbar} className="flex flex-col items-center p-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0" >
+      <div className={showNav? " w-full absolute bg-[#5A16F3] m-0 z-50 visible drop-shadow-lg" : " w-full absolute bg-[#5A16F3] m-0 z-50 invisible"}>
+        <ul onClick={handleNavbar} className=" flex flex-col items-center py-4 md:flex-row md:mt-0 md:text-sm md:font-medium md:border-0" >
             <li>
               <Link
                 to="/"
-                className="block py-2 pr-4 pl-3 text-white font-normal "
+                className="block py-2  text-white font-normal "
                 aria-current="page"
               >
                 Home
@@ -124,7 +124,7 @@ const NavBar = () => {
             <li>
               <Link
                 to="/team"
-                className="block py-2 pr-4 pl-3 text-white font-normal"
+                className="block text-white font-normal"
               >
                 Equipo
               </Link>
@@ -132,7 +132,7 @@ const NavBar = () => {
             <li>
               <Link
                 to="/estadisticas"
-                className="block py-2 pr-4 pl-3 text-white font-normal"
+                className="block py-2  text-white font-normal"
               >
                 Estadisticas
               </Link>
@@ -140,7 +140,7 @@ const NavBar = () => {
             <li>
               <Link
                 to="/control"
-                className="block py-2 pr-4 pl-3 text-white font-normal"
+                className="block py-2 text-white font-normal"
               >
                 Panel General
               </Link>
