@@ -5,44 +5,44 @@ import mediumCloud from "../../assets/imgs/nubemediana.svg"
 const Team = () => {
     const team = [
         {
-          name: "Pablo",
+          name: "Pablo Vieyra",
           role: "Fullstack Developer",
-          image: "https://avatars2.githubusercontent.com/u/17098281?s=460&v=4",
-          github: "",
-          linkedin: "",
-          skills: ["React", "JS", "Node",],
+          image: "https://media-exp1.licdn.com/dms/image/C4D03AQHy9V1netSdKA/profile-displayphoto-shrink_800_800/0/1647300735789?e=1667433600&v=beta&t=FisI6bco79TVzbRk4GqTw8Pwiic5Xi5MEYUNKu7Enjc",
+          github: "https://github.com/pabloVieyra",
+          linkedin: "https://www.linkedin.com/in/pablo-vieyra/",
+          skills: ["React", "JS", "Node.js",],
         },
         {
-          name: "Julian",
+          name: "Julian Rosales",
           role: "Backend Developer",
-          image: "https://avatars2.githubusercontent.com/u/17098281?s=460&v=4",
-          github: "",
-          linkedin: "",
-          skills: ["JAVA","Springboot"],
+          image: "https://media-exp1.licdn.com/dms/image/D4D35AQH3noC8Gvv0Tw/profile-framedphoto-shrink_800_800/0/1628871558954?e=1662764400&v=beta&t=adVO1Dlf-qbbuADatODNd86PB8iu_gfOqwLUA6gkrv0",
+          github: "https://github.com/melk15",
+          linkedin: "https://www.linkedin.com/in/julian-rosales-086bb319a/",
+          skills: ["JAVA","Spring Boot", "Spring Security", "MySQL"],
         },
         {
-          name: "Gonzalo",
+          name: "Gonzalo Altamirano",
           role: "Frontend Developer",
-          image: "https://avatars2.githubusercontent.com/u/17098281?s=460&v=4",
-          github: "",
-          linkedin: "",
-          skills: ["React", "JS", "Node","Jest", "Cypres"],
+          image: "https://media-exp1.licdn.com/dms/image/D4D35AQEYey74CMVf8w/profile-framedphoto-shrink_200_200/0/1652186311870?e=1662764400&v=beta&t=IM4XyX351hPvNHG-00kav33baWm0hOqEJ4_K9w40br0",
+          github: "https://github.com/GonzaloAlt",
+          linkedin: "https://www.linkedin.com/in/gonzalo-altamirano-7b6047137/",
+          skills: ["React", "JS", "Node.js","Jest", "Cypres"],
         },
         {
-          name: "Chelso",
+          name: "Celso Javier Zabala",
           role: "Backend Developer",
-          image: "https://avatars2.githubusercontent.com/u/17098281?s=460&v=4",
-          github: "",
-          linkedin: "",
+          image: "https://media-exp1.licdn.com/dms/image/C4D03AQH8to93EyUTXA/profile-displayphoto-shrink_800_800/0/1644174259059?e=1667433600&v=beta&t=pqWHFG6q_eRCQtZvllQzBXIJejGOE4omygyTQRr7ZpA",
+          github: "https://github.com/celsobrc",
+          linkedin: "https://www.linkedin.com/in/celsojzabala/",
           skills: ["JAVA","Springboot"],
         },
         {
           name: "Matias Silva",
           role: "Frontend Developer",
-          image: "https://avatars2.githubusercontent.com/u/17098281?s=460&v=4",
+          image: "https://media-exp1.licdn.com/dms/image/C5603AQHGUB1iIQy5sA/profile-displayphoto-shrink_800_800/0/1610381274243?e=1667433600&v=beta&t=7nBaAAh3Xg1dNqvamFlIWrAwCenRoH7YCP5Fv2VB1hM",
           github: "https://github.com/Ma77i",
           linkedin: "https://www.linkedin.com/in/mattias-silva/",
-          skills: ["React", "JS", "Node", "MongoDB"],
+          skills: ["React", "JS", "Node.js", "MongoDB"],
         },
       ];
   return (
@@ -66,7 +66,7 @@ const Team = () => {
                 <div className="flex flex-col items-center ">
                   <img
                     className="mb-3 w-16 h-16 rounded-full shadow-lg border border-black mt-6"
-                    src="https://picsum.photos/200"
+                    src={i.image}
                     alt="avatar"
                   />
                   <h5 className="mb-1 text-md font-bold text-gray-900">
