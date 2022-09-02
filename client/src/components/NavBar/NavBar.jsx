@@ -31,7 +31,7 @@ const NavBar = () => {
 
   return (
     <nav className=" bg-[#5A16F3] relative ">
-      <div className="w-full h-[60px] flex flex-wrap justify-between items-center mx-auto px-2 fixed z-50 bg-[#5A16F3]">
+      <div className="w-full h-[60px] flex flex-wrap justify-between items-center mx-auto px-2 fixed z-50 bg-[#5A16F3] px-[10%] py-2">
         <Link to="/" className="flex items-center">
           <img src={FisaluLogo} className="w-10 md:w-12" alt="Fisalu Logo" />
         </Link>
