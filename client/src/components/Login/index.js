@@ -60,7 +60,7 @@ const Login = () => {
       >
         {(formik) => (
           <div>
-            <section className="relative flex flex-wrap lg:h-screen lg:items-center md:px-48 overflow-hidden">
+            <section className="relative flex flex-wrap lg:h-screen lg:items-center md:px-48 overflow-hidden pt-[80px]">
             <img src={tinyCloud} alt="" className="absolute bg-contain z-0 nube-chica"/>
             <img src={mediumCloud} alt="" className="absolute bg-contain z-0 nube-mediana"/>
               <div className="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24 z-40 ">

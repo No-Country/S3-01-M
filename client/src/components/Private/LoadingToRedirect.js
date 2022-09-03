@@ -17,7 +17,7 @@ const LoadingToRedirect = () => {
   }, [count, navigate]);
   return (
     <div className={module.container}>
-      <div className="relative h-screen">
+      <div className="relative h-screen pt-[80px]">
         <h2 className="pt-[10%] text-center text-4xl font-bold text-white">Debe logearse, redirigiendo en {count} segundos</h2>
         <div className="w-full z-40 ">
           <img src={piggyShadowless} className="w-[50%] mx-auto animate-bounce" alt="" />
