@@ -23,9 +23,7 @@ ChartJS.register(
   Filler
 );
 
-const scores = [6, 5, 5, 5, 3, 4, 6, 4, 5];
-const scores2 = [1, 3, 2, 2, 4, 4, 5, 3, 2];
-const labels = [100, 200, 300, 400, 500, 600, 700];
+
 
 const options = {
   fill: true,
@@ -42,7 +40,23 @@ const options = {
   },
 };
 
-const LineChart = () => {
+const LineChart = ({groups}) => {
+
+  const setChartValues = ()=>{
+      const values = Object.values(groups);
+      const addedValues = values.map(value=>value.map(exp=>Number(exp.amount)).reduce((pv,cv)=> pv+cv,0))
+      return addedValues
+  }
+
+  const setChartLabels = ()=>{
+    const dates = Object.keys(groups);
+    return dates;
+  }
+
+
+  const scores = groups? setChartValues(): [0,1,2,3,4,5];
+  const labels = groups? setChartLabels() : [0,1,2,3,4,5];
+
   const data = useMemo(function () {
     return {
       datasets: [
@@ -60,7 +74,7 @@ const LineChart = () => {
     };
   }, []);
 
-  return <Line data={data} options={options} />;
+  return <Line data={data} options={options} className="mx-auto"/>;
 };
 
 export default LineChart;

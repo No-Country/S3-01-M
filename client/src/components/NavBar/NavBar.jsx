@@ -31,7 +31,7 @@ const NavBar = () => {
 
   return (
     <nav className=" bg-[#5A16F3] relative ">
-      <div className="w-full h-[60px] flex flex-wrap justify-between items-center mx-auto px-2 fixed z-50 bg-[#5A16F3] px-[10%] py-2">
+      <div className="w-full h-[70px] flex flex-wrap justify-between items-center mx-auto px-2 fixed z-50 bg-[#5A16F3] md:px-[10%] pb-2">
         <Link to="/" className="flex items-center">
           <img src={FisaluLogo} className="w-10 md:w-12" alt="Fisalu Logo" />
         </Link>
@@ -110,7 +110,7 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
-      <div className={showNav? "w-full fixed bg-[#5A16F3] m-0 z-50 visible drop-shadow-lg mt-[50px] z-50" : " w-full fixed bg-[#5A16F3] m-0 z-50 invisible"}>
+      <div className={showNav? "w-full fixed bg-[#5A16F3] m-0 z-50 visible drop-shadow-lg mt-[60px] z-50" : " w-full fixed bg-[#5A16F3] m-0 z-50 invisible"}>
         <ul onClick={handleNavbar} className=" flex flex-col items-center py-4 md:flex-row md:mt-0 md:text-sm md:font-medium md:border-0" >
             <li>
               <Link

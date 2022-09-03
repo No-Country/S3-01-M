@@ -10,7 +10,7 @@ const Team = () => {
           image: "https://media-exp1.licdn.com/dms/image/C4D03AQHy9V1netSdKA/profile-displayphoto-shrink_800_800/0/1647300735789?e=1667433600&v=beta&t=FisI6bco79TVzbRk4GqTw8Pwiic5Xi5MEYUNKu7Enjc",
           github: "https://github.com/pabloVieyra",
           linkedin: "https://www.linkedin.com/in/pablo-vieyra/",
-          skills: ["React", "JS", "Node.js",],
+          skills: ["React", "JS", "Node.js", "PostgreSQL","Redux", "HTML", "CSS", "C", "C++", "Java", "Python", "Webpack", "Bootstrap"],
         },
         {
           name: "Julian Rosales",
@@ -18,7 +18,7 @@ const Team = () => {
           image: "https://media-exp1.licdn.com/dms/image/D4D35AQH3noC8Gvv0Tw/profile-framedphoto-shrink_800_800/0/1628871558954?e=1662764400&v=beta&t=adVO1Dlf-qbbuADatODNd86PB8iu_gfOqwLUA6gkrv0",
           github: "https://github.com/melk15",
           linkedin: "https://www.linkedin.com/in/julian-rosales-086bb319a/",
-          skills: ["JAVA","Spring Boot", "Spring Security", "MySQL"],
+          skills: ["Java","Spring Boot", "Spring Security", "MySQL"],
         },
         {
           name: "Gonzalo Altamirano",
@@ -26,7 +26,7 @@ const Team = () => {
           image: "https://media-exp1.licdn.com/dms/image/D4D35AQEYey74CMVf8w/profile-framedphoto-shrink_200_200/0/1652186311870?e=1662764400&v=beta&t=IM4XyX351hPvNHG-00kav33baWm0hOqEJ4_K9w40br0",
           github: "https://github.com/GonzaloAlt",
           linkedin: "https://www.linkedin.com/in/gonzalo-altamirano-7b6047137/",
-          skills: ["React", "JS", "Node.js","Jest", "Cypres"],
+          skills: ["React", "JS", "Node.js","Jest", "Cypress", "Express", "Redux", "HTML", "CSS", "Tailwind"],
         },
         {
           name: "Celso Javier Zabala",
@@ -34,7 +34,7 @@ const Team = () => {
           image: "https://media-exp1.licdn.com/dms/image/C4D03AQH8to93EyUTXA/profile-displayphoto-shrink_800_800/0/1644174259059?e=1667433600&v=beta&t=pqWHFG6q_eRCQtZvllQzBXIJejGOE4omygyTQRr7ZpA",
           github: "https://github.com/celsobrc",
           linkedin: "https://www.linkedin.com/in/celsojzabala/",
-          skills: ["JAVA","Spring Boot", "Spring Security", "MySQL"],
+          skills: ["Java","Spring Boot", "Spring Security", "MySQL"],
         },
         {
           name: "Matias Silva",
@@ -61,7 +61,7 @@ const Team = () => {
             {team.map((i) => (
               <div
                 key={i.name}
-                className="shadow-md shadow-indigo-500/50 w-[80%] sm:w-[40%] xs:w-[28%] max-w-[310px] mx-2 bg-white max-w-sm rounded-lg shadow-md my-4 p-2"
+                className="shadow-md shadow-indigo-500/50 w-[80%] sm:w-[80%] xs:w-[28%] max-w-[310px] mx-2 bg-white max-w-sm rounded-lg shadow-md my-4 p-2"
               >
                 <div className="flex flex-col items-center ">
                   <img

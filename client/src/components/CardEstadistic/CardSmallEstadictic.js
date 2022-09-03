@@ -12,7 +12,7 @@ const CardEstadistic = ({expense, title}) => {
   const modifiedTitle = title.charAt(0) + title.slice(1).toLowerCase().split('_').join(' ');
 
   const totalAmount = ()=>{
-    return expense.map(exp=>exp.amount).reduce((pv,cv)=> pv+cv,0)
+    return expense.map(exp=>Number(exp.amount)).reduce((pv,cv)=> pv+cv,0)
   }
   const handleCategory = ()=>{
     dispatch(setCategory(expense))
