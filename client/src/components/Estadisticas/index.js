@@ -27,10 +27,10 @@ const categoryList = Object.values(movementsGroups);
     <div className="pt-[120px] min-h-screen md:px-48 flex flex-row justify-evenly py-6 flex-wrap lg:flex-nowrap min-w-[50%] bg-cover" style={{backgroundImage:`url(${background})`}}>
       <section>
         <div className="flex flex-row gap-6 flex-wrap">
-          <div className="mx-auto max-w-[400px]">
+          <div className="mx-auto w-[80%] md:w-full">
             <CardBigEstadistic />
           </div>
-          <div className="mx-auto max-w-[400px]">
+          <div className="mx-auto w-[80%] md:w-full">
             <CardMidEstadistic />
           </div>
         </div>
@@ -40,7 +40,7 @@ const categoryList = Object.values(movementsGroups);
       </section>
       <section className="flex flex-row flex-wrap justify-center gap-6 content-start pb-8">
           {
-            categoryList.length>=1 ? categoryList.map((category, index)=>(<CardEstadistic key={category+index} expense={category} title={titles[index]}/>)) : <>asd</>
+            categoryList.length>=1 ? categoryList.map((category, index)=>(<CardEstadistic key={category+index} expense={category} title={titles[index]}/>)) : <></>
           }
       </section>
     </div>

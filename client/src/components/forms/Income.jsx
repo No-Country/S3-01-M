@@ -121,7 +121,7 @@ const Income = () => {
                     </div>
                 </div>
                 {/* Nombre ingreso */}
-                <label htmlFor='name' className="text-sm font-medium">Nombre</label>
+                <label htmlFor='name' className="text-sm font-medium text-white">Nombre</label>
                 <Field className="border border-black mb-3 px-2 py-1.5
                     mb-3 mt-1 block w-full px-2 py-1.5  rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
@@ -130,7 +130,7 @@ const Income = () => {
                     focus:ring-sky-500
                     focus:invalid:border-red-500 focus:invalid:ring-red-500" type="text" name="name" id="name" placeholder="Aguinaldo"/>
                     {/* Fecha ingreso */}
-                    <label htmlFor='date' className="text-sm font-medium">Fecha</label>
+                    <label htmlFor='date' className="text-sm font-medium text-white">Fecha</label>
                     <Field className="border border-black mb-3 px-2 py-1.5
                     mb-3 mt-1 block w-full px-2 py-1.5 rounded-md text-sm shadow-sm placeholder-gray-400
                     focus:outline-none
@@ -139,7 +139,7 @@ const Income = () => {
                     focus:ring-sky-500
                     focus:invalid:border-red-500 focus:invalid:ring-red-500" type="date" name="date" id="date" placeholder="Fecha"/>
                 {/* Descripción ingreso */}
-                <label htmlFor='description' className="text-sm font-medium">Descripción (opcional)</label>
+                <label htmlFor='description' className="text-sm font-medium text-white">Descripción (opcional)</label>
                 <Field component="textarea" className=" border border-black
                 mb-3 mt-1 block w-full px-2 py-1.5 rounded-md text-sm shadow-sm placeholder-gray-400
                 focus:outline-none
